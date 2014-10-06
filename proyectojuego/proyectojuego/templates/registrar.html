@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block nav %}
+	<h1>BIENVENIDO</h1>
+{% endblock %}
+
+{% block title %}
+	    <title>Registro usuario</title>
+{% endblock %}
+
+{% block contenido %}
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+			<form action="" method="post">
+				{% csrf_token %}
+				{{ formulario.as_p }}
+				<button type="submit" class="btn btn-primary">Registrar</button>
+			</form>
+				
+			</div>
+		</div>
+	</div>
+{% endblock %}
