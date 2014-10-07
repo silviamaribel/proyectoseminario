@@ -21,6 +21,25 @@ def registro_view(request):
 	else:
 		formulario_registro=fusuario()
 	return render_to_response("registrar.html",{'formulario':formulario_registro},context_instance=RequestContext(request))
+def login_view(request):
+	if request.method=="POST":
+		formulario=AuthenticationForm(request.POST)
+		if(formulario.is_valid()==False):
+			usuario=request.POST["username"]
+			contrasena=request.POST["password"]
+			acceso=authenticate(username=usuario,password=contrasena)
+			if acceso:
+				login(request,acceso)
+				request.session["name"]=usuario
+				return HttpResponseRedirect("/user/perfil/")
+	formulario=AuthenticationForm()
+	return render_to_response("login.html",{"formulario":formulario},RequestContext(request))
+def logout_view(request):
+	logout(request)
+	return HttpResponseRedirect("/")
+
+def perfil_view(request):
+	return render_to_response("perfil.html",{"nombre":request.session["name"]},RequestContext(request))
 def pagina_principal(request):
 	return render_to_response("inicio.html",{},RequestContext(request))
 
