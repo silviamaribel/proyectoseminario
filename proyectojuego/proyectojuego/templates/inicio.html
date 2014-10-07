@@ -8,31 +8,33 @@
 {% endblock %}
 {% block contenido %}
     <div class="container color">
-       
         <div class="row1">
-            <div class="col-xs-4 ex1">
-                <img src="http:{{STATIC_URL}}img/juego3.jpg" alt="descripción de imagen" />
-            </div>
-            <div class="col-xs-4 ex1">
-                <img src="http:{{STATIC_URL}}img/juego5.jpg" alt="descripción de imagen" />
-            </div>
-             <div class="col-xs-4">
-                <h2>PHP</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.</p>
-                <p><a href="#" class="btn btn-success">Learn More »</a></p>
-
+             <div class="col-xs-12 ex1 image">
+                <img src="http:{{STATIC_URL}}img/chala.png" alt="descripción de imagen" />
+                <h2><span>Empieza a jugar gana varios puntos y se el mejor:<span>&nbsp;</span><br><span>&nbsp;</span>Soy un fantasma</span></h2><br><br><br>
+                <h6><span>Registrate para jugar:<span>&nbsp;</span></h6>
             </div>
         </div>
         <div class="row2">
-            <div class="col-xs-12 ex1">
-                <img src="http:{{STATIC_URL}}img/juego1.jpg" alt="descripción de imagen" />
-                <h2>PHP</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.</p>
-                <p><a href="#" class="btn btn-success">Learn More »</a></p>
-                <h2>PHP</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.</p>
-                <p><a href="#" class="btn btn-success">Learn More »</a></p>
+             <div class="col-xs-3 ex1">
+                <img class="mediana" src="http:{{STATIC_URL}}img/juego3.jpg" alt="descripción de imagen" />
+            </div>
+            <div class="col-xs-3 ex1">
+                <img class="mediana" src="http:{{STATIC_URL}}img/juego5.jpg" alt="descripción de imagen" />
+            </div>
+            <div class="col-xs-3 ex1">
+                <img class="mediana" src="http:{{STATIC_URL}}img/juego4.jpg" alt="descripción de imagen" />            
+
+            </div>
+             <div class="col-xs-3 ex1">
+                <img class="mediana" src="http:{{STATIC_URL}}img/pantalla5.jpg" alt="descripción de imagen" />            
+
             </div>
         </div>
+        {% block footer %}
+            <br><br><br><br><br><br><br><br>
+            <center><br><br><br><br>Creado por Silvia Flores</center>
+        {% endblock %}
     </div>
-{% endblock %}
+
+{% endblock %}  

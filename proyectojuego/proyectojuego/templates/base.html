@@ -7,6 +7,8 @@
     <!-- Bootstrap -->
     <link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
     <link href="{{STATIC_URL}}css/estilo.css" rel="stylesheet">
+
+
     {% block title %}
     {% endblock %}
 
@@ -18,26 +20,31 @@
     <![endif]-->
   </head>
   <body>
+
     {% block nav %}
     {% endblock %}
     <div class="container">
         <div class="row menu">
-            <div>
+            <div class="col-xs-8">
               <ul class="span12">
 
                 <li><a href="#">Inicio</a></li>
                 <li><a href="user/registro/">Registro</a></li>
                 <li><a href="login/">Login</a></li>
-                <li><a href="#">Facebook</a></li>
-                <div class="menu1 ex1">
-                <img src="{{STATIC_URL}}img/logo5.png" class="img-responsive" alt="Responsive image">
-                </div>
+                <li><a href="https://www.facebook.com/silviamaribel.floresramos">Facebook</a></li>
               </ul>
+            </div class="col-xs-4">
+                <div class="menu1 ex1">
+                    <img src="{{STATIC_URL}}img/trivia1.png" class="img-responsive" alt="Responsive image">
+                </div>
+            <div>
+
             </div>
         </div>  
     </div>  
     {% block contenido %}
-      
+    {% block footer %}
+    {% endblock %}
     {% endblock %}
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
