@@ -13,6 +13,7 @@ class fperfil(ModelForm):
 class fusuario(UserCreationForm):
 	username=forms.CharField(max_length=40,required=True,help_text=False,label="Nick")
 	password2=forms.CharField(help_text=False,label="Contraseña de confirmación", widget=forms.PasswordInput)
+	first_name=forms.CharField(max_length=50,required=True,label="Nombre")
 	email=forms.EmailField(max_length=100,required=True,label="Email")
 	class Meta:
 		model=User

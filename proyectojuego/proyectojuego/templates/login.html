@@ -17,11 +17,15 @@
 				<h4>Ingrese a su cuenta</h4><br><br>
 				{% csrf_token %}
 				{{ formulario.as_p }}
-				<button type="submit" class="btn btn-primary">Ingresar</button>
+				<button class="boton" type="submit" class="btn btn-primary">Ingresar</button>
 			</form>
 				
 			</div>
 		</div>
 	</div>
+{% block footer %}
+          
+    <center>Creado por Silvia Flores</center>
+{% endblock %}
     
 {% endblock %}
