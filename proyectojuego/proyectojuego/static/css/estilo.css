@@ -95,7 +95,39 @@ h3 {
 }
 .ex1 img:hover {
     margin-top: 2px;
+
+}
+.ex2 img{
+    border: 0px solid #ccc;
+    float: left;
+    margin: 15px;*/
+    -webkit-transition: margin 0.5s ease-out;
+    -moz-transition: margin 0.5s ease-out;
+    -o-transition: margin 0.5s ease-out;
+    border: #FFEFD5 2px solid;
+}
+.ex2 img:hover {
+    margin-top: 2px;
+    border: #FFEFD5 2px solid;
+}
+.menus {
+    background: black;
+    border-radius: 10px;
+    border: #696969 6px solid;
 } 
+.menusss {
+    background: #FFFFE0;
+    border-radius: 10px;
+    border: #696969 5px solid;
+    top:30px;
+    height: 200px;
+} 
+.menusssss {
+    border-radius: 10px;
+    border: #696969 5px solid;
+    top:10px;
+    height: 200px;
+}
 .pie {
     background-color: hsl(51, 40%, 60%);
     border-radius:5px;/*Estandar por defecto*/

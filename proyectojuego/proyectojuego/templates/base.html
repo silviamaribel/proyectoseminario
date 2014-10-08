@@ -30,7 +30,11 @@
 
                 <li><a href="#">Inicio</a></li>
                 <li><a href="user/registro/">Registro</a></li>
-                <li><a href="login/">Login</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="/logout/">Logout</a></li>
+                {% else %}
+                <li><a href="/login/">Login</a></li>
+                {% endif %}
                 <li><a href="https://www.facebook.com/silviamaribel.floresramos">Facebook</a></li>
               </ul>
             </div class="col-xs-4">
