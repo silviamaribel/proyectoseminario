@@ -17,9 +17,10 @@ class fusuario(UserCreationForm):
 	email=forms.EmailField(max_length=100,required=True,label="Email")
 	class Meta:
 		model=User
-		fields=("username","password1","password2","email")
+		fields=("username","password1","password2","first_name","email")
 	def save(self, commit=True):
 		user=super(fusuario,self).save(commit=False)
+		user.first_name=self.cleaned_data.get("first_name")
 		user.email=self.cleaned_data.get("email")
 		if commit:
 			user.save()
