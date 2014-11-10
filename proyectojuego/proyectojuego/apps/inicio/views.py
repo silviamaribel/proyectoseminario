@@ -29,6 +29,13 @@ def registro_view(request):
 def login_view(request):
 	if request.method=="POST":
 		formulario=AuthenticationForm(request.POST)
+		if request.session['cont']>3:
+			formulario2=fcapcha(request.POST)
+			if formulario2.is_valid():
+				pass
+			else:
+				datos={'formulario':formulario,'formulario2':formulario2}
+				return render_to_response("login.html",datos,context_instance=RequestContext(request))
 		if formulario.is_valid:
 			usuario=request.POST['username']
 			contrasena=request.POST['password']
@@ -36,13 +43,24 @@ def login_view(request):
 			if acceso is not None:
 				if acceso.is_active:
 					login(request, acceso)
+					del request.session['cont']
 					return HttpResponseRedirect("/user/perfil/")
 				else:
 					login(request, acceso)
 					return HttpResponseRedirect("/user/active/")
 			else:
-				return HttpResponse("Error en los datos")
+				request.session['cont']=request.session['cont']+1
+				aux=request.session['cont']
+				estado=True
+				mensaje="Error en los datos "+str(aux)
+				if aux>3:
+					formulario2=fcapcha()
+					datos={'formulario':formulario,'formulario2':formulario2,'estado':estado,'mensaje':mensaje}
+				else:
+					datos={'formulario':formulario,'estado':estado,'mensaje':mensaje}
+				return render_to_response("login.html",datos,context_instance=RequestContext(request))
 	else:
+		request.session['cont']=0
 		formulario=AuthenticationForm()
 	return render_to_response("login.html",{'formulario':formulario},context_instance=RequestContext(request))
 

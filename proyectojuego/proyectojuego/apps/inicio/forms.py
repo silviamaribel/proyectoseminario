@@ -4,7 +4,10 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import *
+from captcha.fields import ReCaptchaField
 
+class fcapcha(forms.Form):
+    captcha = ReCaptchaField(attrs={'theme' : 'clean'})
 class fperfil(ModelForm):
 	class Meta:
 		model=Perfil

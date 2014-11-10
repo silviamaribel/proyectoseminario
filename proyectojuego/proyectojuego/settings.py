@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'proyectojuego.apps.inicio',
+    'captcha',
 
 )
 
@@ -62,7 +63,7 @@ WSGI_APPLICATION = 'proyectojuego.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.mysql',
-        'NAME':'juego',
+        'NAME':'juegosilvia',
         'HOST':'127.0.0.1',
         'USER':'root'
     }
@@ -89,3 +90,6 @@ STATIC_URL = '/static/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'proyectojuego/media')
 TEMPLATE_DIRS=(os.path.join(BASE_DIR,'proyectojuego/templates'),)
 STATICFILES_DIRS=(os.path.join(BASE_DIR,'proyectojuego/static'),)
+
+RECAPTCHA_PUBLIC_KEY = '6Lf9cv0SAAAAAJXUjVL_ZUzbWCcIeex_uwsfcHvV'
+RECAPTCHA_PRIVATE_KEY = '6Lf9cv0SAAAAAIN8n2qbdkCyqy0sCOUfLQ5OfvCf'
