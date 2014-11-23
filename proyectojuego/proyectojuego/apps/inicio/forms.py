@@ -1,6 +1,7 @@
 #encoding:utf-8
 from django.forms import ModelForm
 from django import forms
+import pdb
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import *
@@ -9,6 +10,12 @@ from captcha.fields import ReCaptchaField
 class fcapcha(forms.Form):
     captcha = ReCaptchaField(attrs={'theme' : 'clean'})
 class fperfil(ModelForm):
+	nombre=forms.CharField(max_length=100)
+	apellidos=forms.CharField(max_length=100)
+	class Meta:
+		model=Perfil
+		exclude=['user']
+class fperfil_modificar(ModelForm):
 	class Meta:
 		model=Perfil
 		exclude=['user']
@@ -28,3 +35,19 @@ class fusuario(UserCreationForm):
 		if commit:
 			user.save()
 		return user
+class Categorias_Form(ModelForm):
+	class Meta:
+		model=Categorias
+class Pregunta_Form(ModelForm):
+	class Meta:
+		model=Pregunta
+class Respuestas_Opcionales_Form(ModelForm):
+	class Meta:
+		model=Respuestas_Opcionales
+		#exclude=["pregunta"]
+class PartidaForm(ModelForm):
+	#tipo_partida=forms.ChoiceField(widget=forms.RadioSelect,choices=tipo)
+	#seleccionar_categoria=forms.ModelMultipleChoiceField(queryset=categoria.objects.all(),widget=forms.CheckboxSelectMultiple())
+	class Meta:
+		model=Partida
+		exclude=["usuario"]
