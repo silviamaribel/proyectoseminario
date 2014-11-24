@@ -10,7 +10,9 @@ from django.contrib.auth import login, authenticate,logout
 
 # Create your views here.
 def pagina_principal(request):
-	return render_to_response("inicio.html",{},RequestContext(request))
+	return render_to_response("usuario/inicio.html",{},RequestContext(request))
+def pagina_admin(request):
+	return render_to_response("perfilAd.html",{},RequestContext(request))
 def registro_view(request):
 	if request.method=="POST":
 		formulario_registro=fusuario(request.POST)
@@ -24,7 +26,7 @@ def registro_view(request):
 			return HttpResponse("Registrado con exito")
 	else:
 		formulario_registro=fusuario()
-	return render_to_response("registrar.html",{'formulario':formulario_registro},context_instance=RequestContext(request))
+	return render_to_response("usuario/registrar.html",{'formulario':formulario_registro},context_instance=RequestContext(request))
 
 def login_view(request):
 	if request.method=="POST":
@@ -35,7 +37,7 @@ def login_view(request):
 				pass
 			else:
 				datos={'formulario':formulario,'formulario2':formulario2}
-				return render_to_response("login.html",datos,context_instance=RequestContext(request))
+				return render_to_response("usuario/login.html",datos,context_instance=RequestContext(request))
 		if formulario.is_valid:
 			usuario=request.POST['username']
 			contrasena=request.POST['password']
@@ -58,18 +60,18 @@ def login_view(request):
 					datos={'formulario':formulario,'formulario2':formulario2,'estado':estado,'mensaje':mensaje}
 				else:
 					datos={'formulario':formulario,'estado':estado,'mensaje':mensaje}
-				return render_to_response("login.html",datos,context_instance=RequestContext(request))
+				return render_to_response("usuario/login.html",datos,context_instance=RequestContext(request))
 	else:
 		request.session['cont']=0
 		formulario=AuthenticationForm()
-	return render_to_response("login.html",{'formulario':formulario},context_instance=RequestContext(request))
+	return render_to_response("usuario/login.html",{'formulario':formulario},context_instance=RequestContext(request))
 
 def logout_view(request):
 	logout(request)
-	return HttpResponseRedirect("/")
+	return HttpResponseRedirect("/usuario/")
 
 def perfil_view(request):
-	return render_to_response("perfil.html",{},context_instance=RequestContext(request))
+	return render_to_response("usuario/perfil.html",{},context_instance=RequestContext(request))
 
 def user_active_view(request):
 	if request.user.is_authenticated():
@@ -88,7 +90,7 @@ def user_active_view(request):
 					return HttpResponseRedirect("/user/perfil/")
 			else:
 				formulario=fperfil()
-			return render_to_response("activo.html",{'formulario':formulario},context_instance=RequestContext(request))
+			return render_to_response("usuario/activo.html",{'formulario':formulario},context_instance=RequestContext(request))
 	else:
 		return HttpResponseRedirect("/login/")
 def modificar_perfil(request):
@@ -103,13 +105,13 @@ def modificar_perfil(request):
 				return HttpResponseRedirect("/perfil/"+str(usuario.id)+"/")
 		else:
 			formulario=fperfil_modificar(instance=perfil)
-			return render_to_response('modificar_perfil.html',{'formulario':formulario},context_instance=RequestContext(request))
+			return render_to_response('usuario/modificar_perfil.html',{'formulario':formulario},context_instance=RequestContext(request))
 	else:
 		return HttpResponseRedirect("/login/")
-def lista_usuarios(request):
+def listausuarios(request):
 	usuarios=User.objects.all()
-	return render_to_response("usuario/lista_usuarios.html",{"usuarios":usuarios},context_instance=RequestContext(request))
-def addCategoria(request):
+	return render_to_response("usuario/listausuarios.html",{"usuarios":usuarios},context_instance=RequestContext(request))
+def agregarCategoria(request):
 	usuario=request.user
 	if(not usuario.has_perm("usuario.addCategoria")):
 		return HttpResponseRedirect("/error/permit")
@@ -119,10 +121,10 @@ def addCategoria(request):
 			form_cat.save()
 			return HttpResponseRedirect("/blog/categoria/")
 	form_cat=Categorias_Form()
-	return render_to_response("blog/categorias.html",{"form":form_cat},RequestContext(request))
-def addPregunta(request):
+	return render_to_response("categoria.html",{"form":form_cat},RequestContext(request))
+def agregarPregunta(request):
 	usuario=request.user
-	if(not usuario.has_perm("usuario.addPregunta")):
+	if(not usuario.has_perm("usuario.agregarPregunta")):
 		return HttpResponseRedirect("/error/permit")
 	if(request.method=="POST"):
 		form_pre=Pregunta_Form(request.POST)
@@ -130,10 +132,10 @@ def addPregunta(request):
 			form_pre.save()
 			return HttpResponseRedirect("/blog/preguntas/")
 	form_pre=Pregunta_Form()
-	return render_to_response("blog/preguntas.html",{"form":form_pre},RequestContext(request))
+	return render_to_response("preguntas.html",{"form":form_pre},RequestContext(request))
 
 
-def addRespuesta(request):
+def agregarRespuesta(request):
 	usuario=request.user
 	if(not usuario.has_perm("usuario.addRespuesta")):
 		return HttpResponseRedirect("/error/permit")
@@ -143,7 +145,7 @@ def addRespuesta(request):
 			form_res.save()
 			return HttpResponseRedirect("/blog/respuestas/")
 	form_res=Respuestas_Opcionales_Form()
-	return render_to_response("blog/respuestas.html",{"form":form_res},RequestContext(request))
+	return render_to_response("respuestas.html",{"form":form_res},RequestContext(request))
 
 def listar_usuario(request):
 	usuarios=User.objects.all()
@@ -163,22 +165,9 @@ def listar_usuario(request):
 # 	return listadepermisos
 
 #preguntas
-
-def ver_preguntas(request):
-	lista=Pregunta.objects.all()
-	return render_to_response("blog/ver_preguntas.html",{"lista":lista},RequestContext(request))
-def restringir_categoria(request):
-	lista=categoria.objects.all()
-	return render_to_response("blog/restringir_categoria.html",{"categoria":categoria},RequestContext(request))
-def restringir_pregunta(request):
-	lista=pregunta.objects.all()
-	return render_to_response("blog/restringir_pregunta.html",{"lista":lista},RequestContext(request))
-def ver_categoria(request):
-	lista=categorias.objects.all()
-	return render_to_response("blog/ver_categoria.html",{"lista":lista},RequestContext(request))
 def controlar_preguntas(request):
-	lista=pregunta.objects.all()
-	return render_to_response("blog/controlar_preguntas.html",{"lista":lista},RequestContext(request))
+	lista=Pregunta.objects.all()
+	return render_to_response("controlar_preg.html",{"lista":lista},RequestContext(request))
 
 def modificar_pregunta(request,id):
 	pregunta=Pregunta.objects.get(pk=id)
@@ -192,8 +181,8 @@ def modificar_pregunta(request,id):
 	return render_to_response("blog/modificar_pregunta.html",{"fpregunta":fpregunta},RequestContext(request))
 #error desde aki hasta
 def detalle_pregunta(request):
-	pregunta=get_object_or_404(Pregunta,pk=pregunta)
-	return render_to_response("blog/detalle_pregunta.html",{"pregunta":pregunta},RequestContext(request))
+	pregunta=Pregunta.objects.all()
+	return render_to_response("detalle_preg.html",{"pregunta":pregunta},RequestContext(request))
 def ver_detalle(request,id):
 	pregunta=get_object_or_404(mpregunta,pk=id)
 	return render_to_response("blog/ver_detalle.html",{"pregunta":pregunta},RequestContext(request))
@@ -210,20 +199,4 @@ def eliminar_lista_preguntas(request):
 	lista=pregunta.objects.all()
 	return render_to_response("blog/eliminar_lista_preguntas.html",{"lista":lista},RequestContext(request))
 #hasta aki
-def addPartida(request):
-	if(request.method=="POST"):
-		usuario=User.objects.get(username=request.user)
-		form=PartidaForm(request.POST)
-		if(form.is_valid()):
-			obj=form.save(commit=False)
-			obj.usuario=usuario
-			obj.save()
-			form.save_m2m()
-			return HttpResponseRedirect("/trivia/")
-	else:
-		form=PartidaForm()
-	return render_to_response("blog/addPartida.html",{"form":form},RequestContext(request))
-def lista_de_partidas(request):
-	lista=Partida.objects.filter(tipo_partida='public')
-	return render_to_response("blog/lista_de_partidas.html",{"lista":lista},RequestContext(request))
 

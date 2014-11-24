@@ -1,0 +1,40 @@
+{% extends "base.html"%}
+
+{% block title %}
+    <title>inicio</title>
+{% endblock %}
+{% block nav %}
+    <h1>BIENVENIDO</h1>
+{% endblock %}
+{% block contenido %}
+    <div class="container color">
+        <div class="row1">
+             <div class="col-xs-12 ex1 image">
+                <img src="http:{{STATIC_URL}}img/chala.png" alt="descripción de imagen" />
+                <h2><span>Empieza a jugar gana varios puntos y se el mejor:<span>&nbsp;</span><br><span>&nbsp;</span>Soy un fantasma</span></h2><br><br><br>
+                <h6><span>Registrate para jugar:<span>&nbsp;</span></h6>
+            </div>
+        </div>
+        <div class="row2">
+             <div class="col-xs-3 ex1">
+                <img class="mediana" src="http:{{STATIC_URL}}img/juego3.jpg" alt="descripción de imagen" />
+            </div>
+            <div class="col-xs-3 ex1">
+                <img class="mediana" src="http:{{STATIC_URL}}img/juego5.jpg" alt="descripción de imagen" />
+            </div>
+            <div class="col-xs-3 ex1">
+                <img class="mediana" src="http:{{STATIC_URL}}img/juego4.jpg" alt="descripción de imagen" />            
+
+            </div>
+             <div class="col-xs-3 ex1">
+                <img class="mediana" src="http:{{STATIC_URL}}img/pantalla5.jpg" alt="descripción de imagen" />            
+
+            </div>
+        </div>
+        
+    </div>
+{% block footer %}
+            <center>Creado por Silvia Flores</center>
+{% endblock %}
+
+{% endblock %}  

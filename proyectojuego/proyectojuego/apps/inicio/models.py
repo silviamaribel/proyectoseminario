@@ -18,8 +18,9 @@ class Pregunta(models.Model):
 		return "->%s "%(self.Titulo)
 class Respuestas_Opcionales(models.Model):
 	resp1=models.CharField(max_length=150)
-	resp3=models.CharField(max_length=150)
 	resp2=models.CharField(max_length=150)
+	resp3=models.CharField(max_length=150)
+	resp4=models.CharField(max_length=150)
 	pregunta=models.ForeignKey(Pregunta)
 class Juego_user(models.Model):
 	part_perdido=models.IntegerField()

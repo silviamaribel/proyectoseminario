@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}DETALLE DE PREGUNTAS{% endblock title %}
+{% block contenido %}
+<div class="container color">
+	<div class="col-xs-12">
+		<li><a href="crearpreguntas/">Crear preguntas</a></li>
+		<li><a href="verpreguntas/">Ver preguntas</a></li>
+		<li><a href="preguntaseliminar/">Eliminar pregunta</a></li>
+		<li><a href="controlarpreguntas/">Controlar de preguntas</a></li>
+		<ol>
+		{% for i in lista %}
+		<li><a href="ver_detalle_pregunta/{{i.id}}">{{i.enunciado}}</a></li>
+		{% endfor %}
+		</ol>
+	</div>
+</div>
+{% endblock %}
+	

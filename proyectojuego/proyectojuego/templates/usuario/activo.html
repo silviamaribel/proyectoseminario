@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+	    <title>Activar la  Cuenta</title>
+{% endblock %}
+{% block nav %}
+    <h1>BIENVENIDO</h1>
+{% endblock %}
+
+{% block contenido %}
+	<div class="container">
+		<div class="row4">
+			<div class="col-xs-12">
+			<form action="" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ formulario.as_p }}
+				<button class="boton" type="submit" class="btn btn-primary">Activarse</button>
+			</form>
+				
+			</div>
+		</div>
+	</div>
+{% endblock %}

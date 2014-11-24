@@ -40,11 +40,11 @@ h3 {
     border: black 5px solid;
 }
 .span12{ 
-    font-size: 15pt;
+    font-size: 10pt;
  }
 .span12{
     list-style:none;
-    margin:0 10px 0 10px;
+    margin:0 7px 0 7px;
     padding:0;
 }
 .span12 li{
@@ -55,25 +55,25 @@ h3 {
     border-radius:5px;/*Estandar por defecto*/
     float: left;
     font-family:Arial, Helvetica, sans-serif;
-    font-size:25px;
+    font-size:5px;
     font-weight:bold;
-    margin-right:10px;
+    margin-right:6px;
     text-align:center;
     /*Sombras para texto, los mismos parametros que box-shadow*/
     text-shadow: 0px 1px 0px #000;
-    width: 20%;
+    width: 10%;
 }
 .span12 li a{
     color:#999;
     display:block;
-    padding:10px;
+    padding:6px;
     text-decoration:none;
     /*Transiciones*/
     -webkit-transition: 0.4s linear all;
     -moz-transition: 0.4s linear all;
     -o-transition: 0.4s linear all;
     transition: 0.4s linear all;
-    border: 7px solid orange;
+    border: 5px solid orange;
     overflow: hidden;
     font-weight: bold;
     transform: rotate(0deg) orange;
@@ -84,11 +84,11 @@ h3 {
 .span12 li a:hover {
     background-color: hsl(153, 20%, 40%);
     border: 1px solid #7C7C7C;
-} 
+}  
 .ex1 img{
     border: 0px solid #ccc;
     float: left;
-    margin: 15px;*/
+    margin: 8px;*/
     -webkit-transition: margin 0.5s ease-out;
     -moz-transition: margin 0.5s ease-out;
     -o-transition: margin 0.5s ease-out;
@@ -96,6 +96,10 @@ h3 {
 .ex1 img:hover {
     margin-top: 2px;
 
+}
+.ex2 {
+    margin-top: 2px;
+    border: #FFEFD5 2px solid;
 }
 .ex2 img{
     border: 0px solid #ccc;
@@ -174,10 +178,28 @@ h3 {
     border-radius: 11px;
     border-bottom: 10px;
    
-}  
-
-
-
+}
+#formulario3 {
+    background-image: -webkit-linear-gradient(top left, black, white);
+    background-image: -moz-linear-gradient(top left, black, white);
+    background-image: -ms-linear-gradient(top left, black, white);
+    background-image: -o-linear-gradient(top left, black, white);
+    position:absolute;
+    width: 300px;
+    height: 300px;
+    top:100px;
+    right:300px;
+    left:570px;
+    bottom:100px;
+    text-align: center;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black; 
+    border: black 6px solid;
+    border-radius: 11px;
+    border-bottom: 10px;
+   
+}
 /*PARALA IMAGEN DEL CONTAINER*/ 
 <style type="text/css">
 
@@ -238,6 +260,19 @@ letter-spacing: -1px;
 padding: 10px;
 
 }
-#boton {
+.btn {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 10px 20px 0;
+    border: 1px solid #ccc;
     background: orange;
+    border-radius: 8px 8px 8px 8px;
+}
+/*aqui se ara todo para preguntas*/
+#menupre {
+    margin-bottom: 7px;
+    background: linear-gradient(orange, pink);
+    border-radius: 7px;
+    border: black 5px solid;
 }
