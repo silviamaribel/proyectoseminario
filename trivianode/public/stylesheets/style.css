@@ -7,6 +7,9 @@ body {
 h2 {
   color: white;
 }
+h4 {
+  width: 30%;
+}
 .se {
 	left: 50px;
 	width: 50%;
@@ -23,11 +26,23 @@ h2 {
 <style type="text/css">
 
  img.pequeña{width: 10px; height: 10px;}
- img.mediana{width: 20px; height: 20px;}
+ img.mediana{width: 300px; height: 300px;}
  img.grande{width: 630px; height: 800px;}
 
 </style>
 #crear
 {
 	width:5%;
+}
+.ex1 img{
+    border: 0px solid #ccc;
+    left:100px ;
+    height: 30;
+    -webkit-transition: margin 0.5s ease-out;
+    -moz-transition: margin 0.5s ease-out;
+    -o-transition: margin 0.5s ease-out;
+}
+.ex1 img:hover {
+    margin-top: 2px;
+
 }
