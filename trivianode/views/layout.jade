@@ -19,8 +19,8 @@ html
     script(src="/socket.io/socket.io.js")
     
   body
-    nav(class="navbar navbar-inverse navbar-fixed-top", role="navigation")
-     div(class="cotainer")
+    nav(class="navbar navbar-inverse navbar-fixed-top ", role="navigation")
+     div(class="cotainer see ")
       div(class="navbar-header")
        button(type="button" class="navbar-toggle collapsed",data-toggle="collapse" ,data-target="#navbar", aria-expanded="false", aria-controls="navbar")
         span(class="sr-only") Boton de navegacion
@@ -33,7 +33,7 @@ html
         li(class="active")
          a(href="/partidas/") partidas
         li(class="active")
-         a(href="#") Chat
+         a(href="/chat/") Chat
         li(class="dropdown")
               a(href="#", class="dropdown-toggle", data-toggle="dropdown") puntuaciones 
                 i
@@ -47,5 +47,5 @@ html
                   li
                     a(href="/puntos/") Ver puntajes
                   li
-                    a(href="/crearSala/") crear salas 
+                    a(href="/crearSala/") crear salas
     block content

@@ -8,36 +8,26 @@ h2 {
   color: white;
 }
 .se {
+	left: 50px;
+	width: 50%;
 	color: #008080;
 	font-family:Arial, Helvetica, sans-serif;
     font-size:20px;
 }
-#cotainer
+.see {
+	background: orange;
+	font-family:Arial, Helvetica, sans-serif;
+    font-size:20px;
+    height: 50px;
+}
+<style type="text/css">
+
+ img.pequeña{width: 10px; height: 10px;}
+ img.mediana{width: 20px; height: 20px;}
+ img.grande{width: 630px; height: 800px;}
+
+</style>
+#crear
 {
-	width:100%;
-	min-height:150px;
-}
-#chatcss{
-	width:100%;
-}
-#chatcss li{
-	display:inline-block;
-	vertical-align:top;
-}
-#mensajes{
-	width:60%;
-	min-height:140px;
-}
-#listamsn
-{
-	width:100%;
-	border:1px solid #000;
-}
-#users{
-	width:20%;
-	min-height:140px;
-	border:1px solid;
-}
-#listamsn ul li{
-	display:block;
+	width:5%;
 }

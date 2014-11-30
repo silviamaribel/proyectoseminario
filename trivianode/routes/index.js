@@ -9,4 +9,8 @@ router.get("/partidas/",function(req,res){
 	res.render('crerpartida',{title:"Express"});
 
 });
+router.get("/chat/",function(req,res){
+	res.render('chat',{title:"Express"});
+
+});
 module.exports = router;

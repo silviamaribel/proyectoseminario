@@ -2,13 +2,21 @@ extends layout
 block content
  section(id="crearSala", class="container")
   div(class="row")
-   div(class="col-sm-3")
-   div(class="col-sm-6")
+   div(class="col-sm-5")
     h2 Crear Nueva Partida
     form(class="center",role="form")
      fieldset(class="resgistration-form")
       div(class="form-group se") Titulo
        input(type="text", id="titulo", name="titulo", placeholder="Titulo" class="form-control")
+      div(class="form-group se") 
+       label() Seleccione una opcion 
+       div(class="col-ms-10")
+        div(class="radio")
+             label()    Pri
+          input(type="radio")
+        div(class="radio")
+             label()       Pub
+          input(type="radio")
       div(class="form-group se") Nro de Preguntas
        select(class="form-control", placeholder="Preguntas")
         option(value="5") 5
@@ -28,17 +36,9 @@ block content
         option(value="50") 50 segundos
         option(value="55") 55 segundos
         option(value="60") 60 segundos
-      div(class="form-group se") 
-       label() Radios
-       div(class="col-ms-10")
-        div(class="radio")
-             label()    Pri
-          input(type="radio")
-        div(class="radio")
-             label()       Pub
-          input(type="radio")
       div(class="form-group se") Categorias
       div(class="form-group se")
-       button(id="crear", class="btn btn-success btn-md btn-block") crear
-   div(class="col-sm-3")
+       button(id="crear", class="btn btn-success btn-md btn-block ") crear
+   div(class="col-sm-7")
+   img(class="grande" src="/images/pantalla.jpg" alt="")
  section#partidas
