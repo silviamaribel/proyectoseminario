@@ -1,10 +1,43 @@
 body {
-	background-image: url("../images/Ciudad.jpg");
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image:url("../images/Ciudad.jpg");
 }
 
-a {
-  color: orange;
+h2 {
+  color: white;
 }
-.dime {
-	background: orange;
+.se {
+	color: #008080;
+	font-family:Arial, Helvetica, sans-serif;
+    font-size:20px;
+}
+#cotainer
+{
+	width:100%;
+	min-height:150px;
+}
+#chatcss{
+	width:100%;
+}
+#chatcss li{
+	display:inline-block;
+	vertical-align:top;
+}
+#mensajes{
+	width:60%;
+	min-height:140px;
+}
+#listamsn
+{
+	width:100%;
+	border:1px solid #000;
+}
+#users{
+	width:20%;
+	min-height:140px;
+	border:1px solid;
+}
+#listamsn ul li{
+	display:block;
 }
