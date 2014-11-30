@@ -1,17 +1,22 @@
-{% extends "base.html" %}
+{% extends "perilA.html" %}
 {% block title %}DETALLE DE PREGUNTAS{% endblock title %}
 {% block contenido %}
-<div class="container color">
+<div class="container ">
 	<div class="col-xs-12">
-		<li><a href="crearpreguntas/">Crear preguntas</a></li>
-		<li><a href="verpreguntas/">Ver preguntas</a></li>
-		<li><a href="preguntaseliminar/">Eliminar pregunta</a></li>
-		<li><a href="controlarpreguntas/">Controlar de preguntas</a></li>
+		<ul class="cat">
+		<li><a href="/preguntas/">Crear preguntas</a></li>
+		<li><a href="/verpreguntas/">Ver preguntas</a></li>
+		<li><a href="/eliminarlistadepreguntas/">Eliminar pregunta</a></li>
+		<li><a href="/controlarpregunta/">Control de preguntas</a></li>
+		</ul>
+
+		<form id="formulario3" action="" method="post">
 		<ol>
 		{% for i in lista %}
 		<li><a href="ver_detalle_pregunta/{{i.id}}">{{i.enunciado}}</a></li>
 		{% endfor %}
 		</ol>
+		</form>
 	</div>
 </div>
 {% endblock %}

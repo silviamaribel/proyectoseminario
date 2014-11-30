@@ -10,14 +10,14 @@
 {% block contenido %}
 			<div class="col-xs-12">
 				<center>
-					<img src="{{STATIC_URL}}img/img1.jpg" class="img-responsive" alt="Responsive image">
+					<img src="{{STATIC_URL}}img/oooo.png" class="img-responsive" alt="Responsive image">
 				</center>
 			{% if estado %}
 				<div class="alert alert-danger" role="alert">{{mensaje}} <span class="glyphicon glyphicon-warning-sign"></span></div>
 			{% endif %}
-			<form id="formulario2" action="" method="post">
+			<form id="formulario" action="" method="post">
 				<br><br>
-				<h4>Ingrese a su cuenta</h4><br><br>
+				<p>Ingrese a su cuenta</p><br><br>
 				{% csrf_token %}
 				{{ formulario.as_p }}
 				<button type="submit" class="btn" id="submit">Ingresar</button>

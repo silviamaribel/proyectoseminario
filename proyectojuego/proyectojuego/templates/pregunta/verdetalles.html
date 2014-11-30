@@ -1,0 +1,23 @@
+{% extends "principal.html" %}
+{% block title %}VER DETALLES DE UNA PREGUNTA{% endblock title %}
+
+{% endblock aux %}		
+{% block encabezado %}VER DETALLES DE UNA PREGUNTA{% endblock encabezado %}
+{% block contenido %}
+<li><a href="/preguntas/">Crear preguntas</a></li>
+<li><a href="/verpreguntas/">Ver preguntas</a></li>
+<li><a href="/detallespreguntas/">Detalles por pregunta</a></li>
+<li><a href="/eliminarpregunta/">Eliminar pregunta</a></li>
+<li><a href="/controlarpreguntas/">Control de preguntas</a></li>
+<H2>{{pregunta.enunciado}} </H2>
+<H2>
+<ol>
+	<li>{{pregunta.respuesta1}}</li>
+	<li>{{pregunta.respuesta2}}</li>
+	<li>{{pregunta.respuesta3}}</li>
+	<li>{{pregunta.respuesta4}}</li>
+</ol>
+	RESPUESTA: {{pregunta.respuesta_correcta}}
+</H2>
+{% endblock contenido %}
+	

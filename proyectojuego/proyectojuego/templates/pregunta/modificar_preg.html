@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}MODIFICAR PREGUNTA{% endblock title %}
+{% block encabezado %}MODIFICAR PREGUNTA{% endblock encabezado %}
+{% block contenido %}
+<li><a href="/preguntas/">Crear preguntas</a></li>
+<li><a href="/verpreguntas/">Ver preguntas</a></li>
+<li><a href="/detallepreguntas/">Detalles por pregunta</a></li>
+<li><a href="/eliminarpregunta/">Eliminar pregunta</a></li>
+<li><a href="/controlarpregunta/">Control de preguntas</a></li>
+<div class="form ">
+<form action="" method="POST">{{fpregunta.as_ul}}{% csrf_token %}<input type="submit" value=".::ENVIAR::."></form>
+</div>
+{% endblock %}

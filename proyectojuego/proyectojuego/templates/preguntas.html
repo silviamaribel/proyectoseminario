@@ -3,19 +3,24 @@
 		<title>Registro de Preguntas</title>
 {%endblock%}
 {% block contenido%}
-	<div class="container color">
-			<div class="col-xs-12">
-			<center>
-				<form id="formulario3" action="" method="post">
-					<br><br><br><br><br><br><br><br>
-					<h4>crear nueva pregunta</h4><br><br><br>
-					{{form.as_ul}}
-					{% csrf_token %}
-					<br>
-                    <br>
-					<button class="boton" type="submit" class="btn btn-primary">Registrar</button>
-				</form>
-			</center>	
-			</div>
+	<div class="col-xs-12">
+				<ul class="cat">
+				<li><a href="/verpreguntas/">Ver preguntas</a></li>
+				<li><a href="/detallepreguntas/">Detalles por pregunta</a></li>
+				<li><a href="/eliminarlistadepreguntas/">Eliminar pregunta</a></li>
+				<li><a href="/controlarpregunta/">Control de preguntas</a></li>
+				</ul>
+				<center>
+				</center>
+				<center>
+					<form id="formulario" action="" method="post">
+						<br>
+						<p>crear nueva pregunta</p><br>
+						{{form.as_ul}}
+						{% csrf_token %}
+						<br>
+						<button class="btn" type="submit" class="btn btn-primary">Registrar</button>
+					</form>
+				</center>	
 	</div>
 {%endblock%}

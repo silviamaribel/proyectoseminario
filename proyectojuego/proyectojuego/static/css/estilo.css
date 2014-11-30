@@ -1,17 +1,8 @@
-body {
-    width: 100%;
-    height: 100%;
-    /*background: -moz-radial-gradient(50% 50%, #ff8000, #fff); 
-    background: -webkit-radial-gradient(50% 50%, #ff8000, #fff);
-    background: -o-radial-gradient(50% 50%, #ff8000, #fff); 
-    background: -ms-radial-gradient(50% 50%, #ff8000, #fff); 
-    background: radial-gradient(50% 50%, #ff8000, #fff);*/
-    background-image: -webkit-linear-gradient(top left, black, white);
-    background-image: -moz-linear-gradient(top left, black, white);
-    background-image: -ms-linear-gradient(top left, black, white);
-    background-image: -o-linear-gradient(top left, black, white);
-    padding: 15px 0; 
-    }
+body { 
+    /*background: black;*/
+    background-image:url("../img/Ciudad.jpg");
+
+}
 h1{    
     width: auto;
     background-color: black;
@@ -28,19 +19,20 @@ h3 {
     background: yellow;
 }
 .color {
-    height: 800px;
     background: black;
     border-radius: 10px;
-    border: black 5px solid;
 }
 .menu{
     margin-bottom: 15px;
-    background: linear-gradient(orange, pink);
-    border-radius: 7px;
+    background-image: -webkit-linear-gradient(top left, #008080, #996633,#008080);
+    background-image: -moz-linear-gradient(top left, #008080, #996633,   #008080);
+    background-image: -ms-linear-gradient(top left, #008080, #996633,   #008080);
+    background-image: -o-linear-gradient(top left, #008080, #996633,    #008080);
+    border-radius: 12px;
     border: black 5px solid;
 }
 .span12{ 
-    font-size: 10pt;
+    font-size: 30pt;
  }
 .span12{
     list-style:none;
@@ -55,13 +47,13 @@ h3 {
     border-radius:5px;/*Estandar por defecto*/
     float: left;
     font-family:Arial, Helvetica, sans-serif;
-    font-size:5px;
+    font-size:25px;
     font-weight:bold;
     margin-right:6px;
     text-align:center;
     /*Sombras para texto, los mismos parametros que box-shadow*/
     text-shadow: 0px 1px 0px #000;
-    width: 10%;
+    width: 19%;
 }
 .span12 li a{
     color:#999;
@@ -73,22 +65,22 @@ h3 {
     -moz-transition: 0.4s linear all;
     -o-transition: 0.4s linear all;
     transition: 0.4s linear all;
-    border: 5px solid orange;
+    border-radius: 10px;
     overflow: hidden;
     font-weight: bold;
     transform: rotate(0deg) orange;
 }
 .span12 li:hover{
-     border: 1px solid #7C7C7C;
+     border: 1px solid #996633;
 }
 .span12 li a:hover {
-    background-color: hsl(153, 20%, 40%);
-    border: 1px solid #7C7C7C;
+    background-color: #996633;
+    border: 1px solid #996633;
 }  
 .ex1 img{
     border: 0px solid #ccc;
-    float: left;
-    margin: 8px;*/
+    left:100px ;
+    height: 30;
     -webkit-transition: margin 0.5s ease-out;
     -moz-transition: margin 0.5s ease-out;
     -o-transition: margin 0.5s ease-out;
@@ -100,6 +92,7 @@ h3 {
 .ex2 {
     margin-top: 2px;
     border: #FFEFD5 2px solid;
+    
 }
 .ex2 img{
     border: 0px solid #ccc;
@@ -120,7 +113,10 @@ h3 {
     border: #696969 6px solid;
 } 
 .menusss {
-    background: #FFFFE0;
+    background-image: -webkit-linear-gradient(top left, #a0522d, orange);
+    background-image: -moz-linear-gradient(top left, #a0522d, orange);
+    background-image: -ms-linear-gradient(top left, #a0522d, orange);
+    background-image: -o-linear-gradient(top left, #a0522d, orange);
     border-radius: 10px;
     border: #696969 5px solid;
     top:30px;
@@ -138,64 +134,49 @@ h3 {
 }  
  /*diseño de los formularios*/ 
 #formulario {
-    background-image: -webkit-linear-gradient(top left, black, white);
-    background-image: -moz-linear-gradient(top left, black, white);
-    background-image: -ms-linear-gradient(top left, black, white);
-    background-image: -o-linear-gradient(top left, black, white);
     position:absolute;
     width: 300px;
     height: 350px;
-    top:100px;
+    top:45px;
     right:300px;
-    left:570px;
+    left:450px;
     bottom:100px;
     text-align: center;
-    font-size: 14px;
+    font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
-    color: black; 
-    border: black 6px solid;
+    color:#666666 ; 
     border-radius: 11px;
     border-bottom: 10px;
 
 }
 #formulario2 {
-    background-image: -webkit-linear-gradient(top left, black, white);
-    background-image: -moz-linear-gradient(top left, black, white);
-    background-image: -ms-linear-gradient(top left, black, white);
-    background-image: -o-linear-gradient(top left, black, white);
     position:absolute;
     width: 300px;
-    height: 300px;
-    top:100px;
+    height: 350px;
+    top:0px;
     right:300px;
-    left:570px;
+    left:400px;
     bottom:100px;
     text-align: center;
-    font-size: 14px;
+    font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
-    color: black; 
-    border: black 6px solid;
+    color:black ; 
     border-radius: 11px;
     border-bottom: 10px;
    
 }
 #formulario3 {
-    background-image: -webkit-linear-gradient(top left, black, white);
-    background-image: -moz-linear-gradient(top left, black, white);
-    background-image: -ms-linear-gradient(top left, black, white);
-    background-image: -o-linear-gradient(top left, black, white);
     position:absolute;
-    width: 300px;
-    height: 300px;
-    top:100px;
+    width: 150px;
+    height: 450px;
+    top:50px;
     right:300px;
-    left:570px;
+    left:400px;
     bottom:100px;
     text-align: center;
-    font-size: 14px;
+    font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
-    color: black; 
-    border: black 6px solid;
+    color:white ; 
     border-radius: 11px;
     border-bottom: 10px;
    
@@ -204,61 +185,56 @@ h3 {
 <style type="text/css">
 
  img.pequeña{width: 50px; height: 50px;}
- img.mediana{width: 250px; height: 280px;}
- img.grande{width: 1120px; height: 700px;}
+ img.mediana{width: 450px; height: 700px;}
+ img.grande{width: 630px; height: 300px;}
 
 </style>
 .image {
-
 position: relative;
-
-width: 100%; /* for IE 6 */
-
+width: 100%;
 }
 
 h2 {
-
 position: absolute;
-
 top: 30px;
-
 left: 350px;
-
 width: 100%;
-
 }
 
 h2 span {
-
 color: #FFDEAD;
-
 font: bold 24px/45px Helvetica, Sans-Serif;
-
 letter-spacing: -1px;
-
 padding: 10px;
 
 }
 h6 {
-
 position: absolute;
-
-top: 55px;
-
-left: 0px;
-
+top: 150px;
+left: 20px;
 width: 100%;
+
 
 }
 
 h6 span {
 
-font: bold 20px Helvetica, Sans-Serif;
-
+font: bold 30px Helvetica, Sans-Serif;
 letter-spacing: -1px;
-
 padding: 10px;
 
+}
+h4 {
+position: absolute;
+top: 220px;
+left: 300px;
+width: 450px;
+font: bold 15px Helvetica, Sans-Serif;
+color: #FFDEAD;
+
+}
+h5 {
+    font: bold 20px Helvetica, Sans-Serif;
 }
 .btn {
     font-weight: bold;
@@ -275,4 +251,50 @@ padding: 10px;
     background: linear-gradient(orange, pink);
     border-radius: 7px;
     border: black 5px solid;
+}
+/*para las categorias*/
+.cat{ 
+    font-size: 27pt;
+    font-weight: bold; 
+    font-style: italic;
+    background: #008080;
+
+ }
+.cat{
+    list-style:none;
+}
+.cat li{
+    /*Bordes redondeados*/
+    -webkit-border-radius:5px;/*Chrome y Safari*/
+    -moz-border-radius:5px;/*Firefox*/
+    -o-border-radius:5px;/*Opera*/
+    border-radius:5px;/*Estandar por defecto*/
+    float: left;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:20px;
+    font-weight:bold;
+    margin-right:5px;
+    text-align:center;
+    /*Sombras para texto, los mismos parametros que box-shadow*/
+    text-shadow: 0px 1px 0px #000;
+    width: 17%;
+    background: yellow;
+
+}
+.cat li a{
+    color:blue;
+    display:block;
+    padding:3px;
+    text-decoration:none;
+    /*Transiciones*/
+    -webkit-transition: 0.4s linear all;
+    -moz-transition: 0.4s linear all;
+    -o-transition: 0.4s linear all;
+    transition: 0.4s linear all;
+    overflow: hidden;
+    font-weight: bold;
+    transform: rotate(0deg) orange;
+}
+p {
+    top: 200px;
 }

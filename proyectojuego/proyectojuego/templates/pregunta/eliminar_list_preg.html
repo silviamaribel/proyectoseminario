@@ -1,0 +1,23 @@
+{% extends "perilA.html" %}
+{% block encabezado %}ELIMINAR UNA PREGUNTA CUALQUIERA{% endblock encabezado %}
+{% block contenido %}
+<div class="container color">
+	<div class="col-xs-12">
+		<ul class="cat">
+			<li><a href="/preguntas/">Crear preguntas</a></li>
+			<li><a href="/verpreguntas/">Ver preguntas</a></li>
+			<li><a href="/detallepreguntas/">Detalles por pregunta</a></li>
+			<li><a href="/eliminarlistadepreguntas/">Eliminar pregunta</a></li>
+			<li><a href="/controlarpregunta/">Control de pregunta</a></li>
+		</ul>
+		<br><br><br><br>
+		<form id="formulario3" action="" method="post">
+			<ol>
+			{% for i in lista %}
+			<li><a href="/eliminarpregunta/{{i.id}}">{{i.enunciado}}</a></li>
+			{% endfor %}
+			</ol>
+		</form>
+	</div>
+</div>
+{% endblock contenido %}

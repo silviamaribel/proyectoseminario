@@ -4,37 +4,30 @@
     <title>inicio</title>
 {% endblock %}
 {% block nav %}
-    <h1>BIENVENIDO</h1>
+    <h1>BIENVENIDO</h1>s
 {% endblock %}
 {% block contenido %}
-    <div class="container color">
+    <div class="container ">
         <div class="row1">
              <div class="col-xs-12 ex1 image">
-                <img src="http:{{STATIC_URL}}img/chala.png" alt="descripción de imagen" />
+                <img src="http:{{STATIC_URL}}img/oooo.png" alt="descripción de imagen" />
                 <h2><span>Empieza a jugar gana varios puntos y se el mejor:<span>&nbsp;</span><br><span>&nbsp;</span>Soy un fantasma</span></h2><br><br><br>
                 <h6><span>Registrate para jugar:<span>&nbsp;</span></h6>
-            </div>
-        </div>
-        <div class="row2">
-             <div class="col-xs-3 ex1">
-                <img class="mediana" src="http:{{STATIC_URL}}img/juego3.jpg" alt="descripción de imagen" />
-            </div>
-            <div class="col-xs-3 ex1">
-                <img class="mediana" src="http:{{STATIC_URL}}img/juego5.jpg" alt="descripción de imagen" />
-            </div>
-            <div class="col-xs-3 ex1">
-                <img class="mediana" src="http:{{STATIC_URL}}img/juego4.jpg" alt="descripción de imagen" />            
-
-            </div>
-             <div class="col-xs-3 ex1">
-                <img class="mediana" src="http:{{STATIC_URL}}img/pantalla5.jpg" alt="descripción de imagen" />            
-
+                <h4>De aquí en adelante los jugadores intentarán conquistar 
+                    territorios ocupados por otros jugadores y ganar los 
+                    puntos que estos valen. Esta fase consiste en cuatro 
+                    series en las que cada jugador tiene derecho de atacar 
+                    una vez. El orden de ataque en las primeras tres series 
+                    es determinado aleatoriamente. Durante las primeras tres 
+                    series un jugador solo puede atacar territorios que sean 
+                    fronterizos a su imperio.El atacante y el defensor batallan 
+                    entre si, mientras el tercer jugador es espectador.
+                Si al final del juego existe un empate, el desempate será decidido por medio de una pregunta abierta para
+                definir las posiciones finales.</h4> 
             </div>
         </div>
         
     </div>
-{% block footer %}
-            <center>Creado por Silvia Flores</center>
-{% endblock %}
 
 {% endblock %}  
+{% include "includes/pies.html" %}

@@ -22,26 +22,30 @@
   <body>
 
     {% block nav %}
-    {% endblock %}
+    {% endblock %} 
     <div class="container">
         <div class="row menu">
-            <div class="col-xs-8">
+            <div class="col-xs-7">
               <ul class="span12">
 
                 <li><a href="#">Inicio</a></li>
                 <li><a href="/user/registro/">Registro</a></li>
-                <li><a href="/login/">Login</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="/logout/">Salir</a></li>
+                {% else %}
+                    <li><a href="/login/">Login</a></li>
+                {% endif %}
+                {% if user.is_superuser %}
                 <li><a href="/categoria/">Admin</a></li>
+                {% endif %}
               </ul>
-            </div class="col-xs-4">
+            </div class="col-xs-5">
                 <div class="menu1 ex1">
-                    <img src="{{STATIC_URL}}img/trivia2.png" class="img-responsive" alt="Responsive image">
+                    <img src="{{STATIC_URL}}img/ttt.png" class="pequeña" alt="Responsive image">
                 </div>
             <div>
-
-            </div>
         </div>  
-    </div>  
+    </div> 
     {% block contenido %}
     {% block footer %}
     {% endblock %}

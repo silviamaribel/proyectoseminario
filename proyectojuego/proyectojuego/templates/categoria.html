@@ -1,18 +1,20 @@
 {% extends "perilA.html" %}
 {% block contenido %}
-		<div class="container color"
 			<div class="col-xs-12">
-			<center>
-				<form id="formulario3" action="" method="post">
-					<br><br><br><br><br><br><br><br>
-					<h4>crear nueva categoria</h4><br><br><br>
-					{% csrf_token %}
-					{{form.as_ul}}
-                    
-                    <br>
-					<button class="boton" type="submit" class="btn btn-primary">Registrar</button>
-				</form>
-			</center>	
+				<ul class="cat">
+					<li><a href="/vercategorias">Ver categorias</a></li>
+					<center>
+				</ul>
+				<center>
+				</center>
+					<form id="formulario2" action="" method="post">
+						<br><br>
+						<p>crear nueva categoria</p><br>
+						{% csrf_token %}
+						{{form.as_ul}}
+                    	<br>
+						<button class="btn" type="submit" class="btn btn-primary">Registrar</button>
+					</form>
+				</center>	
 			</div>
-		</div>
 {% endblock %}
