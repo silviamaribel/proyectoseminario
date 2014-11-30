@@ -5,4 +5,8 @@ var router = express.Router();
 router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
+router.get("/partidas/",function(req,res){
+	res.render('crerpartida',{title:"Express"});
+
+});
 module.exports = router;
