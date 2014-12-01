@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}VER DETALLES DE UNA PREGUNTA{% endblock title %}
+{% block contenido %}
+<div class="container color">
+		<div class="col-xs-12">
+			<li><a href="/preguntas/">Crear preguntas</a></li>
+			<li><a href="/verpreguntas/">Ver preguntas</a></li>
+			<li><a href="/detallepreguntas/">Detalles por pregunta</a></li>
+			<li><a href="/eliminarpregunta/">Eliminar pregunta</a></li>
+			<li><a href="/controlarpregunta/">Control de preguntas</a></li>
+            <h2>Lista de Pregunta</h2>
+            </ul>
+            <ul>
+                {% for i in pregunta %}
+                    <li><a href="/pregunta/perfil/{{i.id}}/">{{ i.pregunta }}</a> </li>
+                {% endfor %}
+            </ul>
+        </div>
+{% endblock %}
+{% endblock %}
+	

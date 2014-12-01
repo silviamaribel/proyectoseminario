@@ -9,6 +9,19 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+// para mi base de dtaos campo aumentado silvia
+//var mysql=require("./db/mysql");
+//var query=new mysql({host:"localhost",user:"root",password:"",database:"juego"});
+// base de datos de django silvia 
+//var query2=new mysql(
+    //{host:"localhost",
+    //user:"root",
+    //password:"",
+    //database:"chatgrafico"});
+
+//sesiones par  salas silvia
+//var session=require("./session/django");
+//var reviewsession=session();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -61,4 +74,4 @@ var PORT=3000;
 var server=app.listen(PORT,function(){
     console.log("Servidor corriendo en el puerto"+PORT);
 });
-
+//aumentando para funcon de los sockets

@@ -19,8 +19,10 @@ h3 {
     background: yellow;
 }
 .color {
-    background: black;
+    background: #008080;
     border-radius: 10px;
+    height: 500px;
+    width: 500px;
 }
 .menu{
     margin-bottom: 15px;
@@ -30,6 +32,7 @@ h3 {
     background-image: -o-linear-gradient(top left, #008080, #996633,    #008080);
     border-radius: 12px;
     border: black 5px solid;
+    height: 100px;
 }
 .span12{ 
     font-size: 30pt;
@@ -66,16 +69,18 @@ h3 {
     -o-transition: 0.4s linear all;
     transition: 0.4s linear all;
     border-radius: 10px;
+    background-image: -webkit-linear-gradient(top left, #008080, #996633,#008080);
+    /*border: 5px solid orange;*/
     overflow: hidden;
     font-weight: bold;
     transform: rotate(0deg) orange;
 }
 .span12 li:hover{
-     border: 1px solid #996633;
+     border: 5px solid #996633;
 }
 .span12 li a:hover {
     background-color: #996633;
-    border: 1px solid #996633;
+    border: 5px solid #996633;
 }  
 .ex1 img{
     border: 0px solid #ccc;
@@ -254,45 +259,18 @@ h5 {
 }
 /*para las categorias*/
 .cat{ 
-    font-size: 27pt;
-    font-weight: bold; 
-    font-style: italic;
-    background: #008080;
+    font-size: 10pt;
+    background-image: -webkit-linear-gradient(top left, #008080, #996633,#008080);
 
- }
-.cat{
-    list-style:none;
 }
 .cat li{
-    /*Bordes redondeados*/
-    -webkit-border-radius:5px;/*Chrome y Safari*/
-    -moz-border-radius:5px;/*Firefox*/
-    -o-border-radius:5px;/*Opera*/
-    border-radius:5px;/*Estandar por defecto*/
-    float: left;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size:20px;
-    font-weight:bold;
-    margin-right:5px;
-    text-align:center;
-    /*Sombras para texto, los mismos parametros que box-shadow*/
-    text-shadow: 0px 1px 0px #000;
-    width: 17%;
-    background: yellow;
+    width: 20%;
+    background-image: -webkit-linear-gradient(top left, #008080, #996633,#008080);
 
 }
 .cat li a{
     color:blue;
     display:block;
-    padding:3px;
-    text-decoration:none;
-    /*Transiciones*/
-    -webkit-transition: 0.4s linear all;
-    -moz-transition: 0.4s linear all;
-    -o-transition: 0.4s linear all;
-    transition: 0.4s linear all;
-    overflow: hidden;
-    font-weight: bold;
     transform: rotate(0deg) orange;
 }
 p {

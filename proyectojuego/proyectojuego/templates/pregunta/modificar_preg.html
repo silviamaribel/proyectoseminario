@@ -2,12 +2,18 @@
 {% block title %}MODIFICAR PREGUNTA{% endblock title %}
 {% block encabezado %}MODIFICAR PREGUNTA{% endblock encabezado %}
 {% block contenido %}
-<li><a href="/preguntas/">Crear preguntas</a></li>
-<li><a href="/verpreguntas/">Ver preguntas</a></li>
-<li><a href="/detallepreguntas/">Detalles por pregunta</a></li>
-<li><a href="/eliminarpregunta/">Eliminar pregunta</a></li>
-<li><a href="/controlarpregunta/">Control de preguntas</a></li>
-<div class="form ">
-<form action="" method="POST">{{fpregunta.as_ul}}{% csrf_token %}<input type="submit" value=".::ENVIAR::."></form>
+<div class="container color">
+        <div class="row1">
+            	<ul class="cat">
+            	<li><a href="/preguntas/">Crear preguntas</a></li>
+				<li><a href="/eliminarpregunta/">Eliminar </a></li>
+				<li><a href="/listapreguntas/">Listar</a></li>
+				<li><a href="/verpreguntas/">Ver</a></li>
+            	</ul>
+            	<div class="form ">
+					<form action="" method="POST">{{fpregunta.as_ul}}{% csrf_token %}<input type="submit" value=".::ENVIAR::."></form>
+				</div>
+        </div>
 </div>
+
 {% endblock %}

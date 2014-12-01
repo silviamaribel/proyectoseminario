@@ -3,15 +3,13 @@
 {% block contenido %}
    <div class="container color">
         <div class="row1">
-            <div class="col-xs-12 ex1 image">
             	<ul class="cat">
             	<li><a href="/preguntas/">Crear preguntas</a></li>
-				<li><a href="/verpreguntas/">Ver preguntas</a></li>
-				<li><a href="/detallepreguntas/">Detalles por pregunta</a></li>
-				<li><a href="/eliminarpregunta/">Eliminar pregunta</a></li>
-				<li><a href="/controlarpregunta/">Control de preguntas</a></li>
+				<li><a href="/eliminarpregunta/">Eliminar </a></li>
+				<li><a href="/listapreguntas/">Listar</a></li>
+				<li><a href="/verpreguntas/">Ver</a></li>
             	</ul>
-				<form id="formulario3" action="" method="post">
+            </div>
 				{% for i in lista %}
 				{{i.id}}.-{{i.enunciado}}
 				<ol id="lista">
@@ -20,7 +18,6 @@
 				<li>{{i.respuesta3}}</li>
 				<li>{{i.respuesta4}}</li>
 				</ol>
-				</form>
 			</div>
         </div>
     </div>	

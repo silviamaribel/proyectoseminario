@@ -28,12 +28,14 @@ html
         span(class="icon-bar")
         span(class="icon-bar")
        a(class="navbar-brand",href="#") Node.js
-      div(id="navbar",class="collapse navbar-collapse")
+      div(id="navbar",class="col-sm-6")
        ul( class="nav navbar-nav")
         li(class="active")
          a(href="/partidas/") partidas
         li(class="active")
          a(href="/chat/") Chat
+        li(class="active")
+         a(href="/#/") Perfil
         li(class="dropdown")
               a(href="#", class="dropdown-toggle", data-toggle="dropdown") puntuaciones 
                 i
@@ -48,19 +50,6 @@ html
                     a(href="/puntos/") Ver puntajes
                   li
                     a(href="/crearSala/") crear salas
+      div(id="navbar",class="col-sm-6")
+      img(class="li" src="/images/ttt.png" alt="")
     block content
-    h2 Unete a las partidas
-    h4 De aquí en adelante los jugadores intentarán conquistar 
-                    territorios ocupados por otros jugadores y ganar los 
-                    puntos que estos valen. Esta fase consiste en cuatro 
-                    series en las que cada jugador tiene derecho de atacar 
-                    una vez. El orden de ataque en las primeras tres series 
-                    es determinado aleatoriamente. Durante las primeras tres 
-                    series un jugador solo puede atacar territorios que sean 
-                    fronterizos a su imperio.El atacante y el defensor batallan 
-                    entre si, mientras el tercer jugador es espectador.
-                Si al final del juego existe un empate, el desempate será decidido por medio de una pregunta abierta para definir las posiciones finales.
-    div(class="dibujo ex1")
-    img(class="mediana " src="/images/pantalla.jpg" alt="")
-    img(class="mediana" src="/images/pantalla.jpg" alt="")
-    img(class="mediana" src="/images/pantalla.jpg" alt="")

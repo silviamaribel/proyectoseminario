@@ -111,6 +111,9 @@ def modificar_perfil(request):
 def listausuarios(request):
 	usuarios=User.objects.all()
 	return render_to_response("usuario/listausuarios.html",{"usuarios":usuarios},context_instance=RequestContext(request))
+def listar_usuario(request):
+	usuarios=User.objects.all()
+	return render_to_response("blog/listar_usuario.html",{"usuarios":usuarios},context_instance=RequestContext(request))
 def agregarCategoria(request):
 	usuario=request.user
 	if(not usuario.has_perm("usuario.addCategoria")):
@@ -147,9 +150,7 @@ def agregarRespuesta(request):
 	form_res=Respuestas_Opcionales_Form()
 	return render_to_response("respuestas.html",{"form":form_res},RequestContext(request))
 
-def listar_usuario(request):
-	usuarios=User.objects.all()
-	return render_to_response("blog/listar_usuario.html",{"usuarios":usuarios},context_instance=RequestContext(request))
+
 #def permisos(request):
 #	listadepermisos=[]
 #	if(request.user.has_perm("usuarios.addCategoria")):
@@ -165,17 +166,8 @@ def listar_usuario(request):
 # 	return listadepermisos
 
 #preguntas
-def ver_preguntas(request):
-	lista=Pregunta.objects.all()
-	return render_to_response("pregunta/ver_preg.html",{"lista":lista},RequestContext(request))
-def ver_categoria(request):
-	lista=Categorias.objects.all()
-	return render_to_response("pregunta/ver_cat.html",{"lista":lista},RequestContext(request))
-def control_preguntas(request):
-	lista=Pregunta.objects.all()
-	return render_to_response("pregunta/controlar_preg.html",{"lista":lista},RequestContext(request))
 def modificar_pregunta(request,id):
-	pregunta=get_object_or_404(Pregunta,pk=id)
+	pregunta=get_object_or_404(mPregunta,pk=id)
 	if request.method=="POST":
 		fpregunta=preguntaForm(request.POST,instance=pregunta)	
 		if fpregunta.is_valid():
@@ -184,38 +176,50 @@ def modificar_pregunta(request,id):
 	else:
 		fpregunta=preguntaForm(instance=pregunta)
 	return render_to_response("pregunta/modificar_preg.html",{"fpregunta":fpregunta},RequestContext(request))
-def detalle_pregunta(request):
-	lista=Pregunta.objects.all()
-	return render_to_response("pregunta/detalle_preg.html",{"lista":lista},RequestContext(request))
-def ver_detalles(request,id):
-	pregunta=get_object_or_404(Pregunta,pk=id)
-	return render_to_response("pregunta/ver_detalle.html",{"pregunta":pregunta},RequestContext(request))
 def eliminar_pregunta(request,id):
 	aux=Pregunta.objects.get(pk=id)
 	borrar=aux.delete()
 	return HttpResponseRedirect("/pregunta/preguntaseliminar/")
-def lista_preguntas_eliminar(request):
+def listar_pregunta(request):
+	pregunta=Pregunta.objects.all()
+	return render_to_response("listar_pregunta.html",{'pregunta':pregunta},context_instance=RequestContext(request))
+
+def pregunta_ver(request,id):
 	lista=Pregunta.objects.all()
-	return render_to_response("pregunta/eliminar_list_preg.html",{"lista":lista},RequestContext(request))
-def crear_partida(request):
-	if (request.method=="POST"):
-		usuario=User.objects.get(username=request.user)
-		form=partidaForm(request.POST)
-		#usuario=User.objects.get(username=request.user)
-		if(form.is_valid()):
-			obj=form.save(commit=False)
-			obj.usuario=usuario
-			obj.save()
-			form.save_m2m()
-			return HttpResponseRedirect("/trivia/")
-	else:
-		form=partidaForm()
-	return render_to_response("pregunta/crearpartida.html",{"form":form},RequestContext(request))
-def lista_partidas(request):
-	lista=partida.objects.filter(tipo_partida='public')
-	return render_to_response("pregunta/listapartidas.html",{"lista":lista},RequestContext(request))
-#hasta aki
-def categoria_restringida(request):
-	return render_to_response("pregunta/catrestringida.html",{},RequestContext(request))
-def pregunta_restringida(request):
-	return render_to_response("pregunta/pregrestringida.html",{},RequestContext(request))
+	return render_to_response("pregunta/ver_preg.html",{"lista":lista},RequestContext(request))
+
+def listar_categoria(request):
+	lista=Categorias.objects.all()
+	return render_to_response("pregunta/ver_cat.html",{"lista":lista},RequestContext(request))
+
+
+
+
+
+
+
+
+
+
+
+#def ver_preguntas(request):
+#	lista=Pregunta.objects.all()
+#	return render_to_response("pregunta/ver_preg.html",{"lista":lista},RequestContext(request))
+#def ver_categoria(request):
+#	lista=Categorias.objects.all()
+#	return render_to_response("pregunta/ver_cat.html",{"lista":lista},RequestContext(request))
+#def control_preguntas(request):
+#	lista=Pregunta.objects.all()
+#	return render_to_response("pregunta/controlar_preg.html",{"lista":lista},RequestContext(request))
+#
+#def detalle_pregunta(request):
+#	lista=Pregunta.objects.all()
+#	return render_to_response("pregunta/detalle_preg.html",{"lista":lista},RequestContext(request))
+#def ver_detalles(request,id):
+#	pregunta=get_object_or_404(Pregunta,pk=id)
+#	return render_to_response("pregunta/ver_detalle.html",{"pregunta":pregunta},RequestContext(request))
+#
+#def lista_preguntas_eliminar(request):
+#	lista=Pregunta.objects.all()
+#	return render_to_response("pregunta/eliminar_list_preg.html",{"lista":lista},RequestContext(request))
+

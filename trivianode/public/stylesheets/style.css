@@ -18,11 +18,25 @@ h4 {
     font-size:20px;
 }
 .see {
-	background: orange;
+	background-image: -webkit-linear-gradient(top left, #008080, #996633,#008080);
+    background-image: -moz-linear-gradient(top left, #008080, #996633,   #008080);
+    background-image: -ms-linear-gradient(top left, #008080, #996633,   #008080);
+    background-image: -o-linear-gradient(top left, #008080, #996633,    #008080);
 	font-family:Arial, Helvetica, sans-serif;
     font-size:20px;
-    height: 50px;
+    height: 100px;
 }
+.formulario {
+	margin-top: 70px;
+}
+/*para el chat*/
+.formulario1 {
+  margin-top: 70px;
+  width: 40%;
+  background-color: #87CEFA;
+
+}
+
 <style type="text/css">
 
  img.pequeña{width: 10px; height: 10px;}
@@ -46,3 +60,5 @@ h4 {
     margin-top: 2px;
 
 }
+/*para la parte del chat de slas*/
+

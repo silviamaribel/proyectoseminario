@@ -2,6 +2,7 @@
 {% block title %}LISTA DE CATEGORIAS{% endblock title %}
 {% block encabezado %}LISTA DE CATEGORIAS{% endblock encabezado %}
 {% block contenido %}
+     	<div class="container color">
 			<div class="col-xs-12">
 				<ul class="cat">
 					<li><a href="/categoria">Crear categorias</a></li>
@@ -10,7 +11,6 @@
 				</ul>
 				<center>
 				</center>
-					<form id="formulario3" action="" method="post">
 						<h5>LISTA DE CATEGORIAS</h5>
 						<br>
 						<ul id="categorias">
@@ -18,8 +18,8 @@
 						<li>{{i.nombre}}</li>
 						{% endfor %}
 						</ul>
-					</form>
 				</center>	
 			</div>
+		</div>
 {% endblock contenido %}
 	
