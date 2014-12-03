@@ -3,17 +3,17 @@
 		<title>Registro de Preguntas</title>
 {%endblock%}
 {% block contenido%}
-	<div class="container">
+	<div class="container ">
 			<div class="col-xs-12">
 				<ul class="cat">
-					<li><a href="/modificar/(?P<id>\d+)/">modificar</a></li>
+					<li><a href="modificar/">modificar</a></li>
 					<li><a href="/eliminarpregunta/">Eliminar </a></li>
 					<li><a href="/listapreguntas/">Listar</a></li>
 					<li><a href="/verpreguntas/">Ver</a></li>
 					<center>
 				</ul>
 				<br><br><br>
-					<form id="formulario" action="" method="post">
+					<form id="formulario4" action="" method="post">
 						<br>
 						<p>crear nueva pregunta</p><br>
 						{{form.as_ul}}

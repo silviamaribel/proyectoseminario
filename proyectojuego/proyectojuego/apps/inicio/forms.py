@@ -45,9 +45,3 @@ class Respuestas_Opcionales_Form(ModelForm):
 	class Meta:
 		model=Respuestas_Opcionales
 		#exclude=["pregunta"]
-class PartidaForm(ModelForm):
-	#tipo_partida=forms.ChoiceField(widget=forms.RadioSelect,choices=tipo)
-	#seleccionar_categoria=forms.ModelMultipleChoiceField(queryset=categoria.objects.all(),widget=forms.CheckboxSelectMultiple())
-	class Meta:
-		model=Partida
-		exclude=["usuario"]

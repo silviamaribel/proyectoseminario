@@ -16,8 +16,7 @@
 				<div class="alert alert-danger" role="alert">{{mensaje}} <span class="glyphicon glyphicon-warning-sign"></span></div>
 			{% endif %}
 			<form id="formulario" action="" method="post">
-				<br><br>
-				<p>Ingrese a su cuenta</p><br><br>
+				<p>Ingrese su cuenta</p>
 				{% csrf_token %}
 				{{ formulario.as_p }}
 				<button type="submit" class="btn" id="submit">Ingresar</button>
@@ -32,8 +31,7 @@
 			<div>
 				{{formulario2.as.p}}
 			</div>
-		</div>
-	</div>
+
 {% block footer %}
           
     <center>Creado por Silvia Flores</center>

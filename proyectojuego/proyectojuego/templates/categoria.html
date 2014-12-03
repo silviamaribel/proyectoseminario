@@ -1,5 +1,6 @@
 {% extends "perilA.html" %}
 {% block contenido %}
+<div class="container ">
 			<div class="col-xs-12">
 				<ul class="cat">
 					<li><a href="/vercategorias">Ver categorias</a></li>
@@ -7,9 +8,9 @@
 				</ul>
 				<center>
 				</center>
-					<form id="formulario2" action="" method="post">
+					<form id="formulario4" action="" method="post">
 						<br><br>
-						<p>crear nueva categoria</p><br>
+						<p>CREAR NUEVA CATEGORIA</p><br>
 						{% csrf_token %}
 						{{form.as_ul}}
                     	<br>
@@ -17,4 +18,5 @@
 					</form>
 				</center>	
 			</div>
+</div>
 {% endblock %}

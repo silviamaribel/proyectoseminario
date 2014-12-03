@@ -18,6 +18,7 @@ h4 {
     font-size:20px;
 }
 .see {
+  top: 20px;
 	background-image: -webkit-linear-gradient(top left, #008080, #996633,#008080);
     background-image: -moz-linear-gradient(top left, #008080, #996633,   #008080);
     background-image: -ms-linear-gradient(top left, #008080, #996633,   #008080);

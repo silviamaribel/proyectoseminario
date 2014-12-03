@@ -22,13 +22,3 @@ class Respuestas_Opcionales(models.Model):
 	resp3=models.CharField(max_length=150)
 	resp4=models.CharField(max_length=150)
 	pregunta=models.ForeignKey(Pregunta)
-class Juego_user(models.Model):
-	part_perdido=models.IntegerField()
-	part_ganado=models.IntegerField()
-	puntuacion=models.IntegerField()
-class Partida(models.Model):
-	Titulo_p=models.CharField(max_length=150)
-	Tipo=models.CharField(max_length=15)
-	Num_preguntas=models.IntegerField()
-	categoria_par=models.ManyToManyField(Categorias)
-	usuario=models.ForeignKey(User)

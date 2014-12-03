@@ -7,6 +7,7 @@ from .models import *
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate,logout
+from django.contrib.sessions.backends.db import SessionStore
 
 # Create your views here.
 def pagina_principal(request):
@@ -45,10 +46,16 @@ def login_view(request):
 			if acceso is not None:
 				if acceso.is_active:
 					login(request, acceso)
+					p=SessionStore()
+					p["name"]=usuario
+					p["estado"]="conectado"
+					p.save()
+					request.session["idkey"]=p.session_key
 					del request.session['cont']
 					return HttpResponseRedirect("/user/perfil/")
 				else:
 					login(request, acceso)
+					
 					return HttpResponseRedirect("/user/active/")
 			else:
 				request.session['cont']=request.session['cont']+1
@@ -67,8 +74,15 @@ def login_view(request):
 	return render_to_response("usuario/login.html",{'formulario':formulario},context_instance=RequestContext(request))
 
 def logout_view(request):
+	#p=SessionStore(session_key=request.session["idkey"])
+	#p["estado"]="desconectado"
+	#p["name"]=""
+	#p.save()
 	logout(request)
 	return HttpResponseRedirect("/login/")
+def chat(request):
+	idsession=request.session["idkey"]
+	return HttpResponseRedirect("http://localhost:3000/django/"+idsession)
 
 def perfil_view(request):
 	return render_to_response("usuario/perfil.html",{},context_instance=RequestContext(request))
@@ -167,15 +181,15 @@ def agregarRespuesta(request):
 
 #preguntas
 def modificar_pregunta(request,id):
-	pregunta=get_object_or_404(mPregunta,pk=id)
+	pregunta=Pregunta.objects.get(pk=id)
 	if request.method=="POST":
-		fpregunta=preguntaForm(request.POST,instance=pregunta)	
+		fpregunta=Pregunta_Form(request.POST, instance=pregunta)
 		if fpregunta.is_valid():
 			fpregunta.save()
-			return HttpResponse("Pregunta modificada ")
+			return HttpResponse("pregunta modificada")
 	else:
-		fpregunta=preguntaForm(instance=pregunta)
-	return render_to_response("pregunta/modificar_preg.html",{"fpregunta":fpregunta},RequestContext(request))
+		fpregunta=Pregunta_Form(instance=pregunta)
+	return render_to_response("blog/modificar_pregunta.html",{"fpregunta":fpregunta},RequestContext(request))
 def eliminar_pregunta(request,id):
 	aux=Pregunta.objects.get(pk=id)
 	borrar=aux.delete()
