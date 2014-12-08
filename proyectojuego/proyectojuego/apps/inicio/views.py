@@ -108,79 +108,9 @@ def user_active_view(request):
 	else:
 		return HttpResponseRedirect("/login/")
 def modificar_perfil(request):
-	if request.user.is_authenticated():
-		u=request.user
-		usuario=User.objects.get(username=u)
-		perfil=Perfil.objects.get(user=usuario)
-		if request.method=='POST':
-			formulario=fperfil_modificar(request.POST,request.FILES,instance=perfil)
-			if formulario.is_valid():
-				formulario.save()
-				return HttpResponseRedirect("/user/perfil/")
-		else:
-			formulario=fperfil_modificar(instance=perfil)
-			return render_to_response('usuario/modificar_perfil.html',{'formulario':formulario},context_instance=RequestContext(request))
-	else:
-		return HttpResponseRedirect("/login/")
-def listausuarios(request):
-	usuarios=User.objects.all()
-	return render_to_response("usuario/listausuarios.html",{"usuarios":usuarios},context_instance=RequestContext(request))
-def listar_usuario(request):
-	usuarios=User.objects.all()
-	return render_to_response("blog/listar_usuario.html",{"usuarios":usuarios},context_instance=RequestContext(request))
-def agregarCategoria(request):
 	usuario=request.user
 	if(not usuario.has_perm("usuario.addCategoria")):
-		return HttpResponseRedirect("/error/permit")
-	if(request.method=="POST"):
-		form_cat=Categorias_Form(request.POST)
-		if(form_cat.is_valid()):
-			form_cat.save()
-			return HttpResponseRedirect("/categoria/")
-	form_cat=Categorias_Form()
-	return render_to_response("categoria.html",{"form":form_cat},RequestContext(request))
-def agregarPregunta(request):
-	usuario=request.user
-	if(not usuario.has_perm("usuario.agregarPregunta")):
-		return HttpResponseRedirect("/error/permit")
-	if(request.method=="POST"):
-		form_pre=Pregunta_Form(request.POST)
-		if(form_pre.is_valid()):
-			form_pre.save()
-			return HttpResponseRedirect("/preguntas/")
-	form_pre=Pregunta_Form()
-	return render_to_response("preguntas.html",{"form":form_pre},RequestContext(request))
-
-
-def agregarRespuesta(request):
-	usuario=request.user
-	if(not usuario.has_perm("usuario.addRespuesta")):
-		return HttpResponseRedirect("/error/permit")
-	if(request.method=="POST"):
-		form_res=Respuestas_Opcionales_Form(request.POST)
-		if(form_res.is_valid()):
-			form_res.save()
-			return HttpResponseRedirect("/respuestas/")
-	form_res=Respuestas_Opcionales_Form()
-	return render_to_response("respuestas.html",{"form":form_res},RequestContext(request))
-
-
-#def permisos(request):
-#	listadepermisos=[]
-#	if(request.user.has_perm("usuarios.addCategoria")):
-#		listadepermisos.append("url":"/blog/categorias","label":"Categorias")
-#	if(request.user.has_perm("usuarios.addPregunta")):
-#		listadepermisos.append("url":"/blog/pregunta","label":"Pregunta")
-#	if(request.user.has_perm("usuarios.addRespuesta")):
-#		listadepermisos.append("url":"/blog/respuestas","label":"Respuestas")
-#	if(request.user.has_perm("usuarios.ver_blog")):
-#		listadepermisos.append("url":"/blog/addcrearpartida","label":"blog")
-#	listadepermisos.append({"url":"/blog/","label":"Registro"})
-#	listadepermisos.append({"url":"/blog/","label":"Login"})
-# 	return listadepermisos
-
-#preguntas
-def modificar_pregunta(request,id):
+		return render_to_response("blog/restringir_categoria.html",{},RequestContext(request))
 	pregunta=Pregunta.objects.get(pk=id)
 	if request.method=="POST":
 		fpregunta=Pregunta_Form(request.POST, instance=pregunta)
@@ -189,51 +119,86 @@ def modificar_pregunta(request,id):
 			return HttpResponse("pregunta modificada")
 	else:
 		fpregunta=Pregunta_Form(instance=pregunta)
-	return render_to_response("blog/modificar_pregunta.html",{"fpregunta":fpregunta},RequestContext(request))
+	return render_to_response("blog/modificar_preg.html",{"fpregunta":fpregunta},RequestContext(request))
+def listausuarios(request):
+	usuarios=User.objects.all()
+	return render_to_response("usuario/listausuarios.html",{"usuarios":usuarios},context_instance=RequestContext(request))
+def listar_usuario(request):
+	usuarios=User.objects.all()
+	return render_to_response("blog/listar_usuario.html",{"usuarios":usuarios},context_instance=RequestContext(request))
+
+
+def registro_tema(request):
+	titulo="Regitro de temas"
+	temas=Tema.objects.all()
+	if request.method=="POST":
+		formulario=ftema(request.POST)
+		if formulario.is_valid():
+			formulario.save()
+			estado=True
+			datos={'titulo':titulo,'formulario':formulario,'estado':estado,'temas':temas}
+			return render_to_response("pregunta/registro_temas.html",datos,context_instance=RequestContext(request))
+	else:
+		formulario=ftema()
+	datos={'titulo':titulo,'formulario':formulario,'temas':temas}
+	return render_to_response("pregunta/registro_temas.html",datos,context_instance=RequestContext(request))
+
+def add_pregunta(request,id):
+	tema=Tema.objects.get(id=int(id))
+	titulo="Registrar pregunta para el tema de "+tema.nombre
+	titulo2="Registre las respuestas"
+	if request.method=="POST":
+		formulario=fpregunta(request.POST)
+		formulario2=frespuesta(request.POST)
+		if formulario.is_valid() and formulario2.is_valid():
+			pregunta=formulario.save(commit=False)
+			pregunta.tema=tema
+			pregunta.save()
+			respuesta=formulario2.save(commit=False)
+			respuesta.pregunta=pregunta
+			respuesta.save()
+			estado=True
+			formulario=fpregunta()
+			datos={'titulo':titulo,'formulario':formulario,'estado':estado,'titulo2':titulo2,'formulario2':formulario2}
+			return render_to_response("pregunta/registro_preguntas.html",datos,context_instance=RequestContext(request))
+	else:
+		formulario=fpregunta()
+		formulario2=frespuesta()
+	datos={'titulo':titulo,'titulo2':titulo2,'formulario':formulario,'formulario2':formulario2}
+	return render_to_response("pregunta/registro_preguntas.html",datos,context_instance=RequestContext(request))
+def ver_preguntas(request,id):
+	tema=Tema.objects.get(id=int(id))
+	preguntas=Pregunta.objects.filter(tema=tema)
+	datos={'tema':tema,'preguntas':preguntas}
+	return render_to_response("pregunta/ver_preguntas.html",datos,context_instance=RequestContext(request))
+
+def edit_pregunta(request,id):
+	pregunta=Pregunta.objects.get(id=int(id))
+	respuesta=Respuesta.objects.get(pregunta=pregunta)
+	titulo="Editar pregunta"
+	titulo2="Editar las respuestas"
+	if request.method=="POST":
+		formulario=fpregunta(request.POST,instance=pregunta)
+		formulario2=frespuesta(request.POST,instance=respuesta)
+		if formulario.is_valid() and formulario2.is_valid():
+			formulario.save()
+			formulario2.save()
+			estado=True
+			datos={'titulo':titulo,'formulario':formulario,'estado':estado,'titulo2':titulo2,'formulario2':formulario2}
+			return render_to_response("pregunta/registro_preguntas.html",datos,context_instance=RequestContext(request))
+	else:
+		formulario=fpregunta(instance=pregunta)
+		formulario2=frespuesta(instance=respuesta)
+	datos={'titulo':titulo,'titulo2':titulo2,'formulario':formulario,'formulario2':formulario2}
+	return render_to_response("pregunta/registro_preguntas.html",datos,context_instance=RequestContext(request))
+
 def eliminar_pregunta(request,id):
-	aux=Pregunta.objects.get(pk=id)
-	borrar=aux.delete()
-	return HttpResponseRedirect("/pregunta/preguntaseliminar/")
-def listar_pregunta(request):
-	pregunta=Pregunta.objects.all()
-	return render_to_response("listar_pregunta.html",{'pregunta':pregunta},context_instance=RequestContext(request))
-
-def pregunta_ver(request,id):
-	lista=Pregunta.objects.all()
-	return render_to_response("pregunta/ver_preg.html",{"lista":lista},RequestContext(request))
-
-def listar_categoria(request):
-	lista=Categorias.objects.all()
-	return render_to_response("pregunta/ver_cat.html",{"lista":lista},RequestContext(request))
+	pregunta=Pregunta.objects.get(id=int(id))
+	id=pregunta.tema.id
+	respuesta=Respuesta.objects.get(pregunta=pregunta)
+	pregunta.delete()
+	respuesta.delete()
+	return HttpResponseRedirect("/tema/edit/"+str(id)+"/")
 
 
-
-
-
-
-
-
-
-
-
-#def ver_preguntas(request):
-#	lista=Pregunta.objects.all()
-#	return render_to_response("pregunta/ver_preg.html",{"lista":lista},RequestContext(request))
-#def ver_categoria(request):
-#	lista=Categorias.objects.all()
-#	return render_to_response("pregunta/ver_cat.html",{"lista":lista},RequestContext(request))
-#def control_preguntas(request):
-#	lista=Pregunta.objects.all()
-#	return render_to_response("pregunta/controlar_preg.html",{"lista":lista},RequestContext(request))
-#
-#def detalle_pregunta(request):
-#	lista=Pregunta.objects.all()
-#	return render_to_response("pregunta/detalle_preg.html",{"lista":lista},RequestContext(request))
-#def ver_detalles(request,id):
-#	pregunta=get_object_or_404(Pregunta,pk=id)
-#	return render_to_response("pregunta/ver_detalle.html",{"pregunta":pregunta},RequestContext(request))
-#
-#def lista_preguntas_eliminar(request):
-#	lista=Pregunta.objects.all()
-#	return render_to_response("pregunta/eliminar_list_preg.html",{"lista":lista},RequestContext(request))
 

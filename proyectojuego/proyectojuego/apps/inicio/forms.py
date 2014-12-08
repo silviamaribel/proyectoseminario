@@ -35,13 +35,18 @@ class fusuario(UserCreationForm):
 		if commit:
 			user.save()
 		return user
-class Categorias_Form(ModelForm):
+class ftema(ModelForm):
 	class Meta:
-		model=Categorias
-class Pregunta_Form(ModelForm):
+		model=Tema
+
+class fpregunta(ModelForm):
+	nombre=forms.CharField(required=True,label="Pregunta :")
 	class Meta:
 		model=Pregunta
-class Respuestas_Opcionales_Form(ModelForm):
+		exclude=['tema']
+
+class frespuesta(ModelForm):
 	class Meta:
-		model=Respuestas_Opcionales
+		model=Respuesta
+		exclude=['pregunta']
 		#exclude=["pregunta"]
