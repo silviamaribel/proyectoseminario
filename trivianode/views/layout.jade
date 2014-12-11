@@ -8,19 +8,10 @@ html
     script(src="/javascripts/bootstrap.min.js")
     script(src="/javascripts/site.js")
     script(src="/socket.io/socket.io.js")
-
-    link(href="/stylesheets/bootstrap.min.css", rel="stylesheet")
-    link(href="/stylesheets/font-awesome.min.css", rel="stylesheet")
-    link(href="/stylesheets/prettyPhoto.css", rel="stylesheet")
-    link(href="/stylesheets/animate.css", rel="stylesheet")
-    link(href="/stylesheets/main.css", rel="stylesheet")
-    link(href="/stylesheets/style.css", rel="stylesheet")
-    script(src="/javascripts/site.js")
-    script(src="/socket.io/socket.io.js")
     
   body
-    nav(class="navbar navbar-inverse navbar-fixed-top ", role="navigation")
-     div(class="cotainer see ")
+    nav(class="navbar navbar-inverse navbar-fixed-top", role="navigation")
+     div(class="cotainer see")
       div(class="navbar-header")
        button(type="button" class="navbar-toggle collapsed",data-toggle="collapse" ,data-target="#navbar", aria-expanded="false", aria-controls="navbar")
         span(class="sr-only") Boton de navegacion
@@ -29,27 +20,17 @@ html
         span(class="icon-bar")
        a(class="navbar-brand",href="#") Node.js
       div(id="navbar",class="col-sm-6")
-       ul( class="nav navbar-nav")
-        li(class="active")
-         a(href="/partidas/") partidas
+       ul( class="nav navbar-nav formulario3")
+        li(class="active formulario3")
+         a(href="/Partidas/") Partidas
         li(class="active")
          a(href="/chat/") Chat
         li(class="active")
-         a(href="/#/") Perfil
-        li(class="dropdown")
-              a(href="#", class="dropdown-toggle", data-toggle="dropdown") juego 
-                i
-                ul(class="dropdown-menu")
-                  li
-                    a(href="/pregunta/") partidas ganadas 
-                  li
-                      a(href="/respuesta/") psrtidas perdidas
-                  li
-                    a(href="/categoria/") puntuacion 
-                  li
-                    a(href="/puntos/") Ver puntajes
-                  li
-                    a(href="/crearSala/") crear salas
+         a(href="#") Perfil
+        li(class="active")
+         a(href="/#/") Juego
       div(id="navbar",class="col-sm-6")
       img(class="li" src="/images/ttt.png" alt="")
+         
     block content
+    

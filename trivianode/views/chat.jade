@@ -1,13 +1,10 @@
 extends layout
 block content
-	div(class="col-sm-8")
-		div(class="panel panel-default formulario1")
-			div(class="panel-heading") Registrate
-			div(class="panel-body")
-				div(class="input-group")
-					span(class="input-group-addon") @ Nickname
-					input(type="text", class="form-control" placeholder="Nickname" id="nickname" value="#{username}")
-					input(type="hidden",value="#{idsession}" id="id_session")
-
-
+	div(class="panel panel-default formulario1")
+		div(class="panel-heading formulario3") Registrate
+		div(class="panel-body formulario2")
+			div(class="input-group")
+				span(class="input-group-addon") @ Nickname
+				input(type="text", class="form-control" placeholder="Nickname" id="nickname" value="#{username}")
+				input(type="hidden",value="#{idsession}" id="id_session")
 	div#content

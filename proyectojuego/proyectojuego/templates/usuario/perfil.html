@@ -16,14 +16,14 @@
                     <li><a href="/user/modificar/">Modificar cuenta</a></li>
                     </div>
                     <div>
-                    <li><a href="https://www.facebook.com/silviamaribel.floresramos">Facebook</a></li>
+                    <li><a href="/listapartidas/">Partidas</a></li>
                     </div>
                     <div>
-                    <li><a href="/chat/">Partidas</a></li>
+                    <li><a href="/#/"></a></li>
                     </div>
                 </ul>                      
-                <h2>Bienvenido {{ user.get_first_name }}</h2><br><br><br>
-                <img src="/media/{{ user.perfil.avatar}}" alt="avatar">
+                <h2>Bienvenido {{ user.get_full_name }}</h2><br><br><br>
+                <img src="/media/{{ user.perfil.avatar.url_200x200}}" alt="avatar">
                 <br><br><br><br><br><b><br><br>
             </div>
         </div>

@@ -25,19 +25,17 @@ class Respuesta(models.Model):
 	pregunta=models.ForeignKey(Pregunta)
 	def __str__(self):
 		return self.pregunta
-# class Juego_user(models.Model):
-# 	part_perdido=models.IntegerField()
-# 	part_ganado=models.IntegerField()
-# 	puntuacion=models.IntegerField()
-# class Partida(models.Model):
-# 	Titulo_p=models.CharField(max_length=150)
-# 	Tipo=models.CharField(max_length=15)
-# 	Num_preguntas=models.IntegerField()
-# 	categoria_par=models.ManyToManyField(Categorias)
-# 	usuario=models.ForeignKey(User)
-# class Perfil(models.Model):
-# 	user=models.OneToOneField(User, unique=True)
-# 	pais=models.CharField(max_length=100, null=True)
-# 	#firt_name=models.CharField(max_length=30)
-# 	#last_name=models.CharField(max_length=30)
-# 	avatar=ImageWithThumbsField(upload_to="img_user", sizes=((50,50),(200,200)))
+class partida(models.Model):
+	titulo=models.CharField(max_length=200)
+	tipos=(('public','Publico'),('private','Privado'))
+	cant_preguntas=(('10','10'),('20','20'),('30','30'),('40','40'),('50','50'))
+	tiempo=(('10','10'),('15','15'),('20','20'),('25','25'),('30','30'),('35','35'),('40','40'),('45','45'),('50','50'),('55','55'),('60','60'))
+	jugadores=models.PositiveIntegerField()
+	tipo_partida=models.CharField(max_length=200,choices=tipos)
+	preguntas=models.CharField(max_length=5, choices=cant_preguntas)
+	tiempo_respuesta=models.CharField(max_length=5,choices=tiempo)
+	temas_sel=models.ManyToManyField(Tema, blank=False)
+	usuario=models.ForeignKey(User)
+	def __unicode__(self):
+		return self.titulos
+

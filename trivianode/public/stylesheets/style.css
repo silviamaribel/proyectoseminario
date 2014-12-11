@@ -33,9 +33,26 @@ h4 {
 /*para el chat*/
 .formulario1 {
   margin-top: 70px;
-  width: 40%;
+  width: 50%;
+  background-color: #008080;
+  height: 10%;
+
+
+}
+.formulario2 {
   background-color: #87CEFA;
 
+
+}
+.formulario3 {
+  background-color:#008080 ;
+  position:absolute;
+  text-align: center;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  color:#87CEFA ; 
+  border-radius: 11px;
+  border-bottom: 10px;
 }
 
 <style type="text/css">
@@ -61,5 +78,3 @@ h4 {
     margin-top: 2px;
 
 }
-/*para la parte del chat de slas*/
-

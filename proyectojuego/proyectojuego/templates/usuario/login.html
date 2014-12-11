@@ -20,13 +20,13 @@
 				{% csrf_token %}
 				{{ formulario.as_p }}
 				<button type="submit" class="btn" id="submit">Ingresar</button>
+				<a href="{% url 'social:begin' 'facebook'%}">Login facebook</a>
 				<div class="form-group">
 			  		<div class="col-sm-offset-2 col-sm-10">
 			  			{{formulario2.as_p}}
 			  		</div>
 			  	</div>
 			</form>
-				
 			</div>
 			<div>
 				{{formulario2.as.p}}

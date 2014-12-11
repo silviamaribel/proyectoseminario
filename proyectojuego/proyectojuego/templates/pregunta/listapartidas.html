@@ -1,0 +1,39 @@
+{% extends "principal.html" %}
+{% block title %}LISTA DE PARTIDAS{% endblock title %}
+{% block encabezado %}CREAR PARTIDAS{% endblock encabezado %}
+{%block contenido%}
+<div class="container color">
+	<div class="row">
+			<div class="col-xs-4 partida">
+              	<li ><a href="#">Historial de Partidas</a></li>
+              	<br><br><br>
+              	<li><a href="#">Puntuacion</a></li>
+              	<br><br><br>
+              	<li><a href="#">Denuncias</a></li>
+			</div>
+			<div class="col-xs-8">
+				<ul class="list-inline">
+					<br><br><br><br><br><br><br>
+     				<li class="list-group-item active">Listado de partidas</li>
+     				<br>
+					{%for i in lista%}
+					<li class="list-group-item partida1">
+						titulo:
+						<span class="label label-default">{{i.titulo}}</span><br>
+						jugadores:
+						<span class="label label-default">{{i.jugadores}}</span>
+																{%for j in i.categorias_sel.all%}
+									<span class="label label-default">{{j.nombre}}
+																{%endfor%}
+						<br>
+						usuario:
+						<span class="label label-default">{{i.usuario}}
+						<br><br><br><br>
+						<button id="aaa" type="button" class="btn btn-link">UNIRSE PARTIDA</button>
+					{%endfor%}		
+					</li>
+ 				</ul>
+			</div>
+	</div>	
+</div>
+{%endblock%}

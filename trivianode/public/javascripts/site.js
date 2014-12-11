@@ -1,21 +1,28 @@
-$(function($){
+$(function($) {
+	
+
 	var socket=io();
-	if("#id_session")!=undefined &&("#id_session").val()!="")
+	
+	//VERIFICAMOS SI EL DOM SE EXISTE Y SI NO ESTA VACIO
+	if($("#id_session")!=undefined && $("#id_session").val()!="")
 	{
-		socket.emit("setsession"),{"idsession":4ç$("#id_session").val()});
+		//alert($("#id_session").val());
+		socket.emit("setsession",{"idsession":$("#id_session").val()});
 	}
 	socket.on("setsession",function(response){
 		if(response==false){
-			console.log("Error al crar session")
+			console.log("Error al momento de creara la session")
 			return;	
 		}
 		console.log("session creada");
 	});
 	socket.on("errorsession",function(){
 		console.log("Entra a direccionar")
-		document.location.href="http://localhost:8000/usuario/login/";		
+		document.location.href="http://localhost:8000/login/";		
 	});
-	//aqui podemos ver el elmento de nickanme
+	// vemos el evento de teclado sobre el campo de texto nickname y verificamos si el usuario a presionado ENTER
+	//y que no este vacio
+	
 	$("#nickname").keydown(function(event) {
 		if(event.keyCode==13 && $(this).val()!="")
 		{
@@ -33,7 +40,7 @@ $(function($){
 			//en caso de que el nick este disponible accedemos
 			//al sistema de chat para ello llamaremos al metodo 
 			//loadhtml que definiremos más abajo
-			loadhtml("/sala/");
+			loadhtml("/saladechat/");
 			$("#nickname").attr('disabled', 'true');
 
 		}else{
@@ -91,5 +98,16 @@ $(function($){
 	socket.on("mensajes",function(response){
 		console.log(response);
 		$("#mensajes").append("<li>"+response.nick+">"+response.msn+"</li>")
-	});	
+	});
+	var beginchat=function(){
+		$("#mensaje").keydown(function(event) {
+			if(event.keyCode==13){
+				socket.emit("mensaje",{"msn":$("#mensaje").val(),"nick":$("#nickname").val()});
+				$(this).val("");
+			}
+		});
+	}
+	socket.on("confirma_mensaje",function(response){
+		$("#mensajes").append("<li>"+response.nick+" -> "+response.msn+"</li>");
+	});
 });

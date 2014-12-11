@@ -85,6 +85,14 @@ def chat(request):
 	return HttpResponseRedirect("http://localhost:3000/django/"+idsession)
 
 def perfil_view(request):
+	usuario=User.objects.get(username=request.user)
+	# try:
+	# 	perfil=Perfil.objects.get(user=usuario)
+	# 	return HttpResponseRedirect("/user/perfil/")
+	# except Perfil.DoesNotExist:
+	# 		usuario_nuevo=User.objects.get(username=usuario)
+	# 		perfil=Perfil.objects.create(user=usuario_nuevo)
+#creas y le envias a su perfil
 	return render_to_response("usuario/perfil.html",{},context_instance=RequestContext(request))
 
 def user_active_view(request):
@@ -108,18 +116,20 @@ def user_active_view(request):
 	else:
 		return HttpResponseRedirect("/login/")
 def modificar_perfil(request):
-	usuario=request.user
-	if(not usuario.has_perm("usuario.addCategoria")):
-		return render_to_response("blog/restringir_categoria.html",{},RequestContext(request))
-	pregunta=Pregunta.objects.get(pk=id)
-	if request.method=="POST":
-		fpregunta=Pregunta_Form(request.POST, instance=pregunta)
-		if fpregunta.is_valid():
-			fpregunta.save()
-			return HttpResponse("pregunta modificada")
+	if request.user.is_authenticated():
+		u=request.user
+		usuario=User.objects.get(username=u)
+		perfil=Perfil.objects.get(user=usuario)
+		if request.method=='POST':
+			formulario=fperfil_modificar(request.POST,request.FILES,instance=perfil)
+			if formulario.is_valid():
+				formulario.save()
+				return HttpResponseRedirect("/user/perfil/")
+		else:
+			formulario=fperfil_modificar(instance=perfil)
+			return render_to_response('usuario/modificar_perfil.html',{'formulario':formulario},context_instance=RequestContext(request))
 	else:
-		fpregunta=Pregunta_Form(instance=pregunta)
-	return render_to_response("blog/modificar_preg.html",{"fpregunta":fpregunta},RequestContext(request))
+		return HttpResponseRedirect("/login/")
 def listausuarios(request):
 	usuarios=User.objects.all()
 	return render_to_response("usuario/listausuarios.html",{"usuarios":usuarios},context_instance=RequestContext(request))
@@ -129,6 +139,9 @@ def listar_usuario(request):
 
 
 def registro_tema(request):
+	usuario=request.user
+	if(not usuario.has_perm("usuario.addTema")):
+		return HttpResponseRedirect("/error/permit")
 	titulo="Regitro de temas"
 	temas=Tema.objects.all()
 	if request.method=="POST":
@@ -199,6 +212,26 @@ def eliminar_pregunta(request,id):
 	pregunta.delete()
 	respuesta.delete()
 	return HttpResponseRedirect("/tema/edit/"+str(id)+"/")
+def error_permisos(request):
+	return render_to_response("error_permisos.html",{},RequestContext(request))
+def crear_partida(request):
+	if (request.method=="POST"):
+		usuario=User.objects.get(username=request.user)
+		form=partidaForm(request.POST)
+		#usuario=User.objects.get(username=request.user)
+		if(form.is_valid()):
+			obj=form.save(commit=False)
+			obj.usuario=usuario
+			obj.save()
+			form.save_m2m()
+			return HttpResponse("creado con exito")
+	else:
+		form=partidaForm()
+	return render_to_response("pregunta/crearpartida.html",{"form":form},RequestContext(request))
+def lista_partidas(request):
+	lista=partida.objects.filter(tipo_partida='public')
+	return render_to_response("pregunta/listapartidas.html",{"lista":lista},RequestContext(request))
+
 
 
 

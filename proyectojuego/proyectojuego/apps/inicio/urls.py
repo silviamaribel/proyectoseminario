@@ -21,4 +21,9 @@ urlpatterns = patterns('',
   url(r'^tema/edit/(\d+)/$',ver_preguntas, name='edit_pregunta'),
   url(r'^pregunta/edit/(\d+)/$',edit_pregunta, name='edit_pregunta'),
   url(r'^pregunta/eliminar/(\d+)/$',eliminar_pregunta, name='eliminar_pregunta'),
+  url(r'^crearpartida/$',crear_partida),
+  url(r'^listapartidas/$',lista_partidas),
+  url(r'^error/permit/$',error_permisos),
+  url(r'^chat/$',chat),
+  
 )

@@ -8,21 +8,38 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var io=require("socket.io");
- 
 var app = express();
-//para mi base de dtaos campo aumentado silvia
-//var mysql=require("./db/mysql");
-//var query=new mysql({host:"localhost",user:"root",password:"",database:"chat"});
-// base de datos de django silvia 
-//var query=new mysql(
-//    {host:"localhost",
-//    user:"root",
-//    password:"",
-//    database:"juegosilvia"});
 
-//sesiones par  salas silvia
-//var session=require("./session/django");
-//var reviewsession=session();
+var mysql=require("./db/mysql");
+var query=new mysql({host:"localhost",user:"root",password:"",database:"chat"});
+
+var query2=new mysql(
+    {host:"localhost",
+    user:"root",
+    password:"",
+    database:"triviadjango"});
+
+
+var session=require("./session/django");
+var reviewsession=session();
+
+
+
+
+/*query.delete("usuario").where({id:11}).execute(function(w){
+    console.log(w);
+});*/
+/*query.get("usuario").select(["nickname","id"]).limit(2).where({id:"4"}).execute(function(rows){
+    //console.log(rows)
+    rows[0].mensaje.all(function(r){
+        //console.log(r);
+    });
+    rows[0].sala.all(function(r){
+        console.log(r.sala);
+        
+    })
+    
+});*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,7 +52,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+//app.use(express.session({secret:"ditmarosblog"}))
 app.use('/', routes);
 app.use('/users', users);
 
@@ -69,17 +86,18 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-module.exports = app;
 
+
+module.exports = app;
 var PORT=3000;
 var server=app.listen(PORT,function(){
-    console.log("Servidor corriendo en el puerto"+PORT);
-});
-//aumentando para funcon de los sockets
+    console.log("Servidor corriendo en "+PORT);
+})
+//instanciamos los sockets junto con el servidor
 var nicknames=[];
 var sockets=io(server);
 sockets.on("connection",function(socket){
-     //el evento setnickname se ejecuta cuando el cliente a emitido sobre setnickname
+    //el evento setnickname se ejecuta cuando el cliente a emitido sobre setnickname
     socket.on("setsession",function(clientdata){
         socket.idsession=clientdata.idsession;
         reviewsession.getSession(socket.idsession,function(r){
@@ -98,8 +116,8 @@ sockets.on("connection",function(socket){
             console.log(r);
             if(r.estado=="desconectado")
             {
-                socket.emit("errorsession",true);
-                return;
+               socket.emit("errorsession",true);
+               return;
             }
         });
 
@@ -128,18 +146,23 @@ sockets.on("connection",function(socket){
             query.save("mensaje",{mensaje:clientedata.msn,idUs:socket.idUs,idSa:socket.idSala},function(r){
                 console.log(r);
                 sockets.to(socket.salas).emit("mensajes",clientedata);
-            });           
+            });
+            
+            
+            
             return;    
         }
         sockets.sockets.emit("mensajes",false);
         
     });
     socket.on("get_users",function(clientdata){
-         sockets.sockets.emit("get_users",{"lista":nicknames})
+        sockets.sockets.emit("get_users",{"lista":nicknames})
     });
     socket.on("setnickname",function(clientedata){
         if(verificarCuenta(clientedata.nick,socket)){
             nicknames.push(clientedata);
+            //seteamos el nick en el mismo socket del cliente
+            
             crearSalaDb("seminario",socket,function(){
                 socket.nickname=clientedata.nick;
                 socket.salas="general";
@@ -178,7 +201,7 @@ var verificarCuenta=function(ins,socket)
             query.save("usuario",{nickname:ins},function(response){
                 console.log(response);
                 socket.idUs=response.insertId;
-                nicknames.push(rows[0].nickname)
+                //nicknames.push(rows[0].nickname)
             });
         }else{
             console.log(rows);

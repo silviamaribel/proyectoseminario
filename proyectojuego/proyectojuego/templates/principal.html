@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/estilo.css" rel="stylesheet">
+
+
+    {% block title %}
+    {% endblock %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    {% block nav %}
+    {% endblock %} 
+    <div class="container">
+        <div class="row menu">
+            <div class="col-xs-7">
+              <ul class="span12">
+                 <li><a href="/listapartidas/">principal</a></li>
+                 <li><a href="/crearpartida/">creacion partidas</a></li>
+                 <li><a href="/crearpartida/">Sala chat</a></li>
+                 <li><a href="/user/perfil/">perfil</a></li>
+              </ul>
+            </div class="col-xs-5">
+                <div class="menu1 ex1">
+                    <img src="{{STATIC_URL}}img/fff.png" class="pequeña" alt="Responsive image">
+                </div>
+            <div>
+        </div>  
+    </div> 
+    {% block contenido %}
+    {% block footer %}
+    {% endblock %}
+    {% endblock %}
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+  </body>
+</html>
+<!--               
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">TribiadorOnline</li>
+              <li><a href="/blog/listadeusuarios/" >Lista de Usuarios</a></li>
+              <li ><a href="#">Historial de Partidas</a></li>
+              <li><a href="#">Puntuacion</a></li>
+              <li><a href="#">Denuncias</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="span9">
+          <div class="hero-unit">
+            <h1>Trivia.com</h1>
+          </div>
+          {%block container%}
+
+          {%endblock%}
+        </div>  
+      </div>
+    <hr>
+    </div>
+    
+	<footer>
+    <img src="/static/img/form/mariposas para primavera, butterfly (2).gif" border="100" width="100" height="100">
+     <div class="footer">
+      <div class="container">
+        <p class="text-footer">Este es la pagina de juegos<a href="#"> TribiaOnline</a></p>
+      </div>
+    </div>
+    </footer>
+
+          
+</body>
+</html> -->
